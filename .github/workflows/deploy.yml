@@ -1,0 +1,49 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time, and never cancel one halfway: the published site
+# is the thing being replaced.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Check the page
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: python3 .github/scripts/check.py
+
+  deploy:
+    name: Publish
+    needs: check
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url || steps.retry.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+      # GitHub's side hiccups now and then (an ID token timeout, say).
+      # One retry after a short pause; a second failure fails the job.
+      - if: steps.deployment.outcome == 'failure'
+        run: sleep 30
+      - id: retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v5
