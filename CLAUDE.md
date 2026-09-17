@@ -13,15 +13,22 @@ Working guide for this repository. Read it before making any change.
 
 ## 1. Project
 
-**Flor Santos · Bilingual Educator** — a three-page static marketing site for an
-independent English teacher based in Solymar, Ciudad de la Costa, Uruguay.
+**TeroTalk** — a three-page static marketing site for an independent English
+teacher based in Solymar, Ciudad de la Costa, Uruguay.
 
 The site is not a brochure. It is a booking funnel: every page exists to move a
 visitor into a WhatsApp conversation with Flor.
 
 ### Vision
 
-One personal brand, two distinct businesses, kept apart on purpose.
+One umbrella brand, two distinct businesses, kept apart on purpose.
+
+**TeroTalk** is the name on the header, the footer and the domain. Flor Santos is
+the person behind it and stays visible everywhere — the brand lockup reads
+*TeroTalk · con Flor Santos*, and the home page explains the name once, in her
+voice, in the "Quién enseña" section. The brand never replaces the person:
+§2 Positioning depends on a named human, so a change that hides Flor is a
+regression, not a rebrand.
 
 | | **Teacher Flor** (`/kids/`) | **English at Work** (`/professionals/`) |
 |---|---|---|
@@ -180,6 +187,8 @@ repository documentation are English.** Do not mix the two.
 - Headings carry the idea; the italic `<em>` fragment carries the turn.
 - Name the customer's real problem before offering the service.
 - No invented claims. Credentials, years, and institutions must match §1 and the JSON-LD.
+- **TeroTalk is one word, two capitals.** Never "Tero Talk" or "Terotalk" in rendered copy;
+  the all-lowercase form belongs to the domain and the repo slug only.
 - Every CTA is a WhatsApp link with a **pre-filled, context-specific message** — the
   text differs per section so Flor knows what the person was reading.
 
@@ -206,13 +215,17 @@ Add every new page to `PAGES` in that script **and** to `sitemap.xml`.
 
 ### Canonical URL
 
-The site is published at `https://barral.dev/english-tutor-landing/`. The account serves
-its Pages from a custom domain, so a project site lives under that domain instead of at
+The site is published at `https://barral.dev/terotalk/`. The account serves its Pages
+from a custom domain, so a project site lives under that domain instead of at
 `barralex.github.io`. The URL appears in **five** places on every page — the canonical
 link, `og:url`, `og:image`, `twitter:image` and the JSON-LD `url` — plus `sitemap.xml`
 and `robots.txt`. `check.py` compares them against `SITE_BASE` and fails on a mismatch.
-If this site ever gets its own client domain, add a `CNAME` file with the bare host:
-it takes priority over `SITE_BASE`, and everything above changes with it.
+
+`terotalk.com` is the brand's own domain and the site's destination. Moving there is
+one commit: add a `CNAME` file holding the bare host, which takes priority over
+`SITE_BASE`, and rewrite the URL in all seven places above. Do it only once the DNS
+already points at GitHub Pages — a `CNAME` ahead of the records takes the live site
+down.
 
 ### Commits
 
@@ -254,7 +267,8 @@ Tracked here because they block the site being useful, not because they are bugs
 | Real `og-cover.png` | `assets/brand/` | Placeholder |
 | Testimonials | all pages | None yet — do not invent any |
 | Photo of Flor teaching | `assets/` | Only the portrait exists; it stays home-page-only on purpose |
-| Git remote | repository | Not configured yet; the Pages URL is still an assumption |
+| `terotalk.com` DNS | domain registrar | Not pointed at GitHub Pages; until it is, no `CNAME` file |
+| Real personal data in the copy | all pages, JSON-LD, `assets/flor-santos.jpg` | Name, portrait, LinkedIn, schools and zones are still live; they come out and become placeholders in their own commit |
 
 ---
 

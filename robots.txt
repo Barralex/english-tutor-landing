@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://barral.dev/english-tutor-landing/sitemap.xml
+Sitemap: https://barral.dev/terotalk/sitemap.xml

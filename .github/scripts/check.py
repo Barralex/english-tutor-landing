@@ -16,7 +16,7 @@ MAX_PAGE_BYTES = 60 * 1024
 # The account serves its Pages from a custom domain, so a project site
 # lives at barral.dev/<repo>/ and not at <owner>.github.io/<repo>/.
 # A CNAME file still wins, for the day this site gets its own domain.
-SITE_BASE = "https://barral.dev/english-tutor-landing/"
+SITE_BASE = "https://barral.dev/terotalk/"
 
 VOID = {
     "area", "base", "br", "col", "embed", "hr", "img", "input",

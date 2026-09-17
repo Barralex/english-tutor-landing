@@ -1,4 +1,4 @@
-# Flor Santos · Bilingual Educator
+# TeroTalk
 
 **Clases de inglés · Ciudad de la Costa, Uruguay**
 
@@ -23,7 +23,7 @@ Every push to `main` runs `check.py` first: broken markup, a page over the 60 KB
 python .github/scripts/check.py
 ```
 
-Published at `https://barral.dev/english-tutor-landing/`, the URL that `SITE_BASE` in `check.py` validates every page against. A `CNAME` file wins over it, for the day this site gets its own domain.
+Published at `https://barral.dev/terotalk/`, the URL that `SITE_BASE` in `check.py` validates every page against. A `CNAME` file wins over it, and the move to `terotalk.com` is a one-line change once the DNS points at GitHub Pages.
 
 Conventions, design tokens and what is still open before launch: [CLAUDE.md](CLAUDE.md).
 
