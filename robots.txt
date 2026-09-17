@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://barralex.github.io/english-tutor-landing/sitemap.xml
+Sitemap: https://barral.dev/english-tutor-landing/sitemap.xml

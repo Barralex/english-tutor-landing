@@ -189,10 +189,13 @@ Add every new page to `PAGES` in that script **and** to `sitemap.xml`.
 
 ### Canonical URL
 
-The site assumes `https://barralex.github.io/english-tutor-landing/`. That URL appears
-in **five** places: the canonical link, `og:url`, `og:image`, `twitter:image`, and
-`sitemap.xml` — on every page. If a custom domain arrives, add a `CNAME` file with the
-bare host and change all of them together; `check.py` reads `CNAME` and fails on a mismatch.
+The site is published at `https://barral.dev/english-tutor-landing/`. The account serves
+its Pages from a custom domain, so a project site lives under that domain instead of at
+`barralex.github.io`. The URL appears in **five** places on every page — the canonical
+link, `og:url`, `og:image`, `twitter:image` and the JSON-LD `url` — plus `sitemap.xml`
+and `robots.txt`. `check.py` compares them against `SITE_BASE` and fails on a mismatch.
+If this site ever gets its own client domain, add a `CNAME` file with the bare host:
+it takes priority over `SITE_BASE`, and everything above changes with it.
 
 ### Commits
 

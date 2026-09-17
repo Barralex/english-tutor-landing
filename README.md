@@ -31,7 +31,7 @@ python .github/scripts/check.py
 
 ## Before the first deploy
 
-The scaffold assumes `https://barralex.github.io/english-tutor-landing/`. Four places carry that URL: the canonical link, `og:url`, both image tags, and `sitemap.xml`. If a custom domain arrives, add a `CNAME` file with the bare host and change all four together; `check.py` reads `CNAME` and will fail the build if they disagree.
+The site is published at `https://barral.dev/english-tutor-landing/`, under the account's own domain rather than at `barralex.github.io`. Five places on every page carry that URL: the canonical link, `og:url`, both image tags and the JSON-LD `url`, plus `sitemap.xml` and `robots.txt`. `check.py` compares them against `SITE_BASE` and will fail the build if they disagree. If a client domain arrives, add a `CNAME` file with the bare host; it wins over `SITE_BASE`.
 
 Still pending before launch: Flor's WhatsApp number (every `wa.me/` link is blank), a photo of her teaching (`assets/flor-santos.jpg` is the portrait, and it appears on the home page only — on purpose, so it does not lose its effect), the price of the English at Work program, the real coverage polygon in `kids/index.html`, testimonials, and a real `og-cover.png`.
 
