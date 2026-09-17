@@ -65,7 +65,9 @@ dependency update.
 index.html                     Home: brand, the two doors, who Flor is
 kids/index.html                Teacher Flor: in-home lessons, coverage map
 professionals/index.html       English at Work: the 6-hour program
-assets/css/site.css            Single stylesheet: all tokens and all components
+assets/css/site.css            Entry: layer order, imports, reset, base, layout, utilities
+assets/css/tokens.css          Primitives, semantic aliases, spacing and type scales
+assets/css/components.css      Every component block, BEM
 assets/brand/favicon.svg       The knot mark
 assets/brand/og-cover.png      Link preview image (PLACEHOLDER — see §7)
 assets/flor-santos.jpg         Portrait, home page only
@@ -81,9 +83,12 @@ sitemap.xml                    Three URLs; bump lastmod when copy changes
   slugs, `id`s, anchor fragments, CSS classes and JavaScript identifiers — English,
   kebab-case, descriptive. The rendered copy is Spanish; the code is not. Dates are the
   one place the US convention does not apply: ISO 8601 `YYYY-MM-DD`, never `MM/DD/YYYY`.
-- **One stylesheet.** `assets/css/site.css` is the only stylesheet. Do not add a
-  second one and do not introduce a CSS framework. Inline `style` attributes are a
-  last resort, not a shortcut.
+- **Three stylesheets, one cascade.** `site.css` is the only file the pages link. It
+  declares the layer order, imports the other two and holds reset, base, layout and
+  utilities. Do not add a fourth file and do not introduce a CSS framework. Inline
+  `style` attributes are not allowed: there are none left in the markup.
+- **BEM, never the tag.** `.card__title`, `.door--pros`. No `.why div`, no `nth-child`
+  on a tag, no styling that breaks when an element changes.
 - **Page theming via a body class.** `.t-kids` and `.t-pros` re-skin shared
   components per page. Add a theme override there rather than duplicating a component.
 - **Inline SVG sprite.** Icons live in a hidden `<svg>` symbol block at the top of
@@ -104,28 +109,40 @@ in a page or a new rule — add or reuse a token.**
 
 ### Palette
 
-The palette derives from Flor's own LinkedIn banner. It is a warm, printed-paper
-neutral base with a single saturated accent.
+The palette lives in two tiers. Primitives carry the only hex values in the codebase;
+components consume semantic aliases and never a primitive directly. Renaming a colour is
+one line in `tokens.css`.
 
-| Token | Hex | Name | Role |
-|---|---|---|---|
-| `--pizarra` | `#4A4E6D` | pizarra | Brand slate. Eyebrows, secondary marks, handwriting |
-| `--noche` | `#262940` | noche | Dark sections, footer, `.door-pros`, primary text (`--ink`) |
-| `--arena` | `#F3ECE0` | arena | Page background; text colour on dark sections |
-| `--arena-2` | `#E9DFCE` | arena 2 | Recessed panels (`.price-side`, map placeholder) |
-| `--papel` | `#FBF8F2` | papel | Cards, chips, raised surfaces on arena |
-| `--ceibo` | `#B8323A` | ceibo | **Accent — use sparingly.** Primary CTA, italic emphasis, focus ring |
-| `--ceibo-deep` | `#9A2830` | ceibo deep | CTA hover only |
-| `--celeste` | `#A9C4DE` | celeste | Kids door background; accent *on dark* (replaces ceibo there) |
-| `--celeste-soft` | `#DCE7F1` | celeste soft | Kids page hero gradient |
-| `--pino` | `#355E52` | pino | Map polygon and affirmative checks only |
-| `--muted` | `#5F6073` | — | Secondary text on light |
-| `--on-dark` | `#D9D8E5` | — | Secondary text on dark |
-| `--line` | `#DCD2C0` | — | All hairline borders |
+| Semantic token | Primitive | Role |
+|---|---|---|
+| `--color-surface` | `--sand-100` `#F3ECE0` | Page background |
+| `--color-surface-raised` | `--sand-50` `#FBF8F2` | Cards, chips, raised panels |
+| `--color-surface-sunken` | `--sand-200` `#E9DFCE` | Recessed panels |
+| `--color-text` | `--navy-900` `#262940` | Body and headings |
+| `--color-text-muted` | `--slate-500` `#5F6073` | Secondary text |
+| `--color-accent` | `--red-600` `#B8323A` | Emphasis, focus ring, primary CTA |
+| `--color-accent-strong` | `--red-700` `#9A2830` | CTA hover only |
+| `--color-brand` | `--slate-600` `#4A4E6D` | Eyebrows, handwriting, brand mark |
+| `--color-border` | `--sand-300` `#DCD2C0` | Every hairline |
+| `--color-map-area` / `--color-map-base` | `--green-700` / `--red-600` | Coverage map only |
 
-Accent discipline: ceibo is the only saturated colour and it means *"act here."*
-On dark backgrounds, celeste takes over that role. If a page starts to look red,
-something is over-accented.
+**Dark sections never override a component.** `.band--dark`, `.page-hero--dark` and
+`.site-footer` rebind the semantic tokens on themselves, so every component inside adapts
+without a single descendant selector. Accent discipline: red is the only saturated colour
+and it means "act here"; in a dark context the rebinding swaps it for `--blue-300`.
+
+Spacing is a 4px scale, `--space-1` to `--space-24`. No component invents a padding.
+
+### Cascade layers
+
+```
+@layer vendor, reset, tokens, base, layout, components, utilities;
+```
+
+Specificity stops being a contest: a later layer always wins. One trap to remember —
+a stylesheet that arrives as a `<link>` is **unlayered, and unlayered beats every layer**.
+That is why the kids page imports Leaflet into `vendor` from a `<style>` block instead of
+linking it; as a plain link it silently won over the map styles.
 
 ### Typography
 
@@ -241,4 +258,4 @@ Tracked here because they block the site being useful, not because they are bugs
 
 ---
 
-<p align="center"><sub>co-assisted by <b>Claude Opus 5</b></sub></p>
+<p align="center"><sub>co-assisted by <b>Claude Opus 4.8</b></sub></p>

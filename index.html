@@ -47,25 +47,25 @@
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<svg class="icon-sprite" aria-hidden="true">
   <symbol id="knot" viewBox="0 0 200 80"><path d="M30 45 C15 25 50 12 62 32 C74 52 40 64 34 44 C28 26 64 22 66 46 C68 66 36 60 44 38 C52 18 90 32 108 46 C125 60 140 20 162 22 C182 24 188 52 172 60 C158 66 148 50 158 42 C166 36 174 46 168 50" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
   <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="chat" viewBox="0 0 24 24"><path d="M4 19.5 5.3 16A8 8 0 1 1 8 18.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 10.5h6M9 13.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
 </svg>
-<a class="skip" href="#main">Ir al contenido</a>
+<a class="skip-link" href="#main">Ir al contenido</a>
 
-<header class="site-head">
-  <div class="wrap bar">
+<header class="site-header">
+  <div class="wrap site-header__bar">
     <a class="brand" href="./" aria-label="Flor Santos, inicio">
-      <svg aria-hidden="true"><use href="#knot"/></svg>
-      <span><b>Flor Santos</b><small>Bilingual Educator</small></span>
+      <svg class="brand__mark" aria-hidden="true"><use href="#knot"/></svg>
+      <span><b class="brand__name">Flor Santos</b><small class="brand__role">Bilingual Educator</small></span>
     </a>
-    <nav class="nav" aria-label="Principal">
-      <a href="kids/">Chicos</a>
-      <a href="professionals/">Profesionales</a>
-      <a class="opt" href="#about">Sobre Flor</a>
+    <nav class="site-header__nav" aria-label="Principal">
+      <a class="site-header__link" href="kids/">Chicos</a>
+      <a class="site-header__link" href="professionals/">Profesionales</a>
+      <a class="site-header__link site-header__link--optional" href="#about">Sobre Flor</a>
     </nav>
-    <a class="btn btn-dark btn-sm" href="#contact">Contacto</a>
+    <a class="btn btn--dark btn--sm" href="#contact">Contacto</a>
   </div>
 </header>
 
@@ -73,50 +73,50 @@
 
 <section class="home-hero">
   <div class="wrap">
-    <svg class="thread thread-draw" viewBox="0 0 760 170" role="img" aria-label="Un hilo enredado que se desenreda y termina en espiral">
+    <svg class="thread thread--draw home-hero__thread" viewBox="0 0 760 170" role="img" aria-label="Un hilo enredado que se desenreda y termina en espiral">
       <path d="M70 100 C40 60 110 30 140 70 C170 110 100 140 80 105 C60 70 130 45 155 90 C170 125 95 135 95 85 C95 45 170 60 165 100 C160 135 85 125 100 75 C115 35 200 55 230 90 C270 135 330 120 380 95 C430 70 470 60 520 80 C555 95 560 40 600 32 C650 22 690 70 670 110 C652 145 598 140 590 105 C583 75 618 58 640 76 C660 92 648 118 626 115 C610 113 606 96 618 88 C628 82 638 92 632 100"/>
     </svg>
-    <div class="thread-cap hand" aria-hidden="true"><span>“me trabo”</span><span>“puedo”</span></div>
+    <div class="thread-caption hand" aria-hidden="true"><span>“me trabo”</span><span>“puedo”</span></div>
 
     <span class="eyebrow">Ciudad de la Costa · Online en toda Latinoamérica</span>
-    <h1><em>Desenredá</em> tu inglés.</h1>
-    <p class="lead">Soy Flor, educadora bilingüe. Pasé por The British Schools y St. Patrick’s College, y di inglés corporativo a profesionales. Hoy lo hago de a uno: en tu casa si es para tu hijo, online si es para tu trabajo.</p>
+    <h1 class="home-hero__title"><em>Desenredá</em> tu inglés.</h1>
+    <p class="lead lead--large">Soy Flor, educadora bilingüe. Pasé por The British Schools y St. Patrick’s College, y di inglés corporativo a profesionales. Hoy lo hago de a uno: en tu casa si es para tu hijo, online si es para tu trabajo.</p>
     <div class="actions">
-      <a class="btn btn-dark" href="kids/">Para mi hijo</a>
-      <a class="btn btn-line" href="professionals/">Para mi trabajo</a>
+      <a class="btn btn--dark" href="kids/">Para mi hijo</a>
+      <a class="btn btn--outline" href="professionals/">Para mi trabajo</a>
     </div>
   </div>
 </section>
 
-<section class="band-soft" aria-labelledby="doors">
+<section class="band band--soft" aria-labelledby="doors">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="section-head">
       <span class="eyebrow">Dos servicios</span>
-      <h2 id="doors">Una misma forma de enseñar, <em>dos puertas.</em></h2>
-      <p>Lo que cambia es el lugar y el objetivo. Lo que no cambia: clases de a uno, con alguien que viene de aulas bilingües de verdad.</p>
+      <h2 class="section-head__title" id="doors">Una misma forma de enseñar, <em>dos puertas.</em></h2>
+      <p class="section-head__text">Lo que cambia es el lugar y el objetivo. Lo que no cambia: clases de a uno, con alguien que viene de aulas bilingües de verdad.</p>
     </div>
     <div class="doors">
-      <a class="door door-kids" href="kids/">
-        <small>Teacher Flor · a domicilio</small>
-        <h3>Inglés en casa, <em>sin llevarlo a ningún lado.</em></h3>
-        <p>Voy a tu casa en la Costa y trabajo con tu hijo lo mismo que se trabaja en un colegio bilingüe: lectura, conversación y juego.</p>
-        <ul>
-          <li>Primaria, de Year 1 a Year 6</li>
-          <li>Visitas de 2 horas, hermanos o vecinos juntos</li>
-          <li>De Shangrilá a El Pinar</li>
+      <a class="door door--kids" href="kids/">
+        <small class="door__label">Teacher Flor · a domicilio</small>
+        <h3 class="door__title">Inglés en casa, <em>sin llevarlo a ningún lado.</em></h3>
+        <p class="door__text">Voy a tu casa en la Costa y trabajo con tu hijo lo mismo que se trabaja en un colegio bilingüe: lectura, conversación y juego.</p>
+        <ul class="door__list">
+          <li class="door__item">Primaria, de Year 1 a Year 6</li>
+          <li class="door__item">Visitas de 2 horas, hermanos o vecinos juntos</li>
+          <li class="door__item">De Shangrilá a El Pinar</li>
         </ul>
-        <span class="go">Ver clases para chicos <svg aria-hidden="true"><use href="#arrow"/></svg></span>
+        <span class="door__cta">Ver clases para chicos <svg class="door__arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
       </a>
-      <a class="door door-pros" href="professionals/">
-        <small>English at Work · online</small>
-        <h3>¿Te trabás en las reuniones? <em>Eso se termina acá.</em></h3>
-        <p>Leés y escribís en inglés sin problema, pero cuando se prende la cámara te quedás callado. Lo ensayamos hasta que salga solo.</p>
-        <ul>
-          <li>Programa de 6 horas, uno a uno</li>
-          <li>Tus reuniones reales, no un libro</li>
-          <li>Desde cualquier lugar de Latinoamérica</li>
+      <a class="door door--pros" href="professionals/">
+        <small class="door__label">English at Work · online</small>
+        <h3 class="door__title">¿Te trabás en las reuniones? <em>Eso se termina acá.</em></h3>
+        <p class="door__text">Leés y escribís en inglés sin problema, pero cuando se prende la cámara te quedás callado. Lo ensayamos hasta que salga solo.</p>
+        <ul class="door__list">
+          <li class="door__item">Programa de 6 horas, uno a uno</li>
+          <li class="door__item">Tus reuniones reales, no un libro</li>
+          <li class="door__item">Desde cualquier lugar de Latinoamérica</li>
         </ul>
-        <span class="go">Ver el programa <svg aria-hidden="true"><use href="#arrow"/></svg></span>
+        <span class="door__cta">Ver el programa <svg class="door__arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
       </a>
     </div>
   </div>
@@ -125,75 +125,75 @@
 <section id="about" aria-labelledby="about-title">
   <div class="wrap about">
     <figure class="portrait">
-      <img src="assets/flor-santos.jpg" width="843" height="1009" alt="Retrato de Flor Santos" loading="lazy" decoding="async">
-      <figcaption>Hi, I’m Flor!<span>Florencia Santos, maestra bilingüe.</span></figcaption>
+      <img class="portrait__image" src="assets/flor-santos.jpg" width="843" height="1009" alt="Retrato de Flor Santos" loading="lazy" decoding="async">
+      <figcaption class="portrait__caption">Hi, I’m Flor!<span class="portrait__note">Florencia Santos, maestra bilingüe.</span></figcaption>
     </figure>
-    <div class="body">
+    <div>
       <span class="eyebrow">Quién enseña</span>
-      <h2 id="about-title">Seis años en aulas bilingües. <em>Ahora, de a uno.</em></h2>
-      <p>Empecé a enseñar en 2020. En The British Schools of Montevideo acompañé a chicos desde que aprendían a leer en Year 1 hasta Year 6, donde estuve a cargo de inglés y matemática, dentro del programa del Bachillerato Internacional.</p>
-      <p>En paralelo di inglés corporativo remoto a profesionales que trabajaban con equipos del exterior. Ahí aprendí que a un adulto casi nunca le falta vocabulario: le falta haberlo dicho en voz alta antes.</p>
+      <h2 class="about__title" id="about-title">Seis años en aulas bilingües. <em>Ahora, de a uno.</em></h2>
+      <p class="about__text">Empecé a enseñar en 2020. En The British Schools of Montevideo acompañé a chicos desde que aprendían a leer en Year 1 hasta Year 6, donde estuve a cargo de inglés y matemática, dentro del programa del Bachillerato Internacional.</p>
+      <p class="about__text">En paralelo di inglés corporativo remoto a profesionales que trabajaban con equipos del exterior. Ahí aprendí que a un adulto casi nunca le falta vocabulario: le falta haberlo dicho en voz alta antes.</p>
       <div class="facts">
-        <div><b>2020</b><span>enseñando inglés desde entonces</span></div>
-        <div><b>3 años</b><span>en The British Schools of Montevideo</span></div>
-        <div><b>IB</b><span>programas PYP y MYP</span></div>
-        <div><b>B2B</b><span>inglés corporativo para profesionales</span></div>
+        <div class="facts__cell"><b class="facts__value">2020</b><span class="facts__label">enseñando inglés desde entonces</span></div>
+        <div class="facts__cell"><b class="facts__value">3 años</b><span class="facts__label">en The British Schools of Montevideo</span></div>
+        <div class="facts__cell"><b class="facts__value">IB</b><span class="facts__label">programas PYP y MYP</span></div>
+        <div class="facts__cell"><b class="facts__value">B2B</b><span class="facts__label">inglés corporativo para profesionales</span></div>
       </div>
       <ul class="timeline">
-        <li><strong>British Schools</strong><span>Teaching Assistant Years 1 y 2, Assistant Year 5, English &amp; Maths Year 6 (PYP)</span></li>
-        <li><strong>St. Patrick’s</strong><span>St. Patrick’s College, programa MYP</span></li>
-        <li><strong>Vicman</strong><span>Colegio Cooperativo Vicman, primaria bilingüe</span></li>
-        <li><strong>Inc.English</strong><span>Inglés de negocios remoto para profesionales</span></li>
+        <li class="timeline__item"><strong class="timeline__name">British Schools</strong><span class="timeline__detail">Teaching Assistant Years 1 y 2, Assistant Year 5, English &amp; Maths Year 6 (PYP)</span></li>
+        <li class="timeline__item"><strong class="timeline__name">St. Patrick’s</strong><span class="timeline__detail">St. Patrick’s College, programa MYP</span></li>
+        <li class="timeline__item"><strong class="timeline__name">Vicman</strong><span class="timeline__detail">Colegio Cooperativo Vicman, primaria bilingüe</span></li>
+        <li class="timeline__item"><strong class="timeline__name">Inc.English</strong><span class="timeline__detail">Inglés de negocios remoto para profesionales</span></li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="band" aria-labelledby="why">
+<section class="band band--dark" aria-labelledby="why">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="section-head">
       <span class="eyebrow">Por qué acá</span>
-      <h2 id="why">Calidad de colegio bilingüe, <em>sin cruzar a Montevideo.</em></h2>
+      <h2 class="section-head__title" id="why">Calidad de colegio bilingüe, <em>sin cruzar a Montevideo.</em></h2>
     </div>
     <div class="why">
-      <div><b>Con cara y con historia</b><p>En la Costa el apoyo de inglés se busca en portales, entre perfiles anónimos. Acá sabés quién entra a tu casa y dónde enseñó.</p></div>
-      <div><b>De a uno, no en grupo</b><p>Los institutos venden cursos y exámenes. Esto es atención individual, pensada para lo que tu hijo o vos necesitan hoy.</p></div>
-      <div><b>Ni un viaje de más</b><p>A los chicos voy yo, en auto. A los adultos, por videollamada. Nadie pierde una hora en la Giannattasio.</p></div>
+      <div class="why__item"><b class="why__title">Con cara y con historia</b><p class="why__text">En la Costa el apoyo de inglés se busca en portales, entre perfiles anónimos. Acá sabés quién entra a tu casa y dónde enseñó.</p></div>
+      <div class="why__item"><b class="why__title">De a uno, no en grupo</b><p class="why__text">Los institutos venden cursos y exámenes. Esto es atención individual, pensada para lo que tu hijo o vos necesitan hoy.</p></div>
+      <div class="why__item"><b class="why__title">Ni un viaje de más</b><p class="why__text">A los chicos voy yo, en auto. A los adultos, por videollamada. Nadie pierde una hora en la Giannattasio.</p></div>
     </div>
   </div>
 </section>
 
-<section class="band cta" id="contact" aria-labelledby="contact-title" style="padding-top:0">
+<section class="band band--dark band--flush-top cta" id="contact" aria-labelledby="contact-title">
   <div class="wrap">
-    <svg class="thread" viewBox="0 0 200 80" aria-hidden="true"><use href="#knot"/></svg>
-    <h2 id="contact-title">Escribime y vemos <em>por dónde empezar.</em></h2>
-    <p>Contame si es para tu hijo o para vos. Te respondo yo, el mismo día.</p>
+    <svg class="thread cta__thread" viewBox="0 0 200 80" aria-hidden="true"><use href="#knot"/></svg>
+    <h2 class="cta__title" id="contact-title">Escribime y vemos <em>por dónde empezar.</em></h2>
+    <p class="cta__text">Contame si es para tu hijo o para vos. Te respondo yo, el mismo día.</p>
     <div class="actions">
-      <a class="btn btn-main" href="https://wa.me/?text=Hola%20Flor!%20Vi%20tu%20p%C3%A1gina%20y%20quer%C3%ADa%20consultar." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#chat"/></svg>Escribir por WhatsApp</a>
-      <a class="btn btn-line-light" href="https://www.linkedin.com/in/florsantosacosta/" target="_blank" rel="noopener">Ver mi LinkedIn</a>
+      <a class="btn btn--primary" href="https://wa.me/?text=Hola%20Flor!%20Vi%20tu%20p%C3%A1gina%20y%20quer%C3%ADa%20consultar." target="_blank" rel="noopener"><svg class="btn__icon" aria-hidden="true"><use href="#chat"/></svg>Escribir por WhatsApp</a>
+      <a class="btn btn--outline-light" href="https://www.linkedin.com/in/florsantosacosta/" target="_blank" rel="noopener">Ver mi LinkedIn</a>
     </div>
   </div>
 </section>
 
 </main>
 
-<footer class="site-foot">
+<footer class="site-footer">
   <div class="wrap">
-    <div class="foot">
-      <div>
-        <a class="brand" href="./"><svg aria-hidden="true"><use href="#knot"/></svg><span><b>Flor Santos</b><small>Bilingual Educator</small></span></a>
-        <p>Clases de inglés de a uno. A domicilio en Ciudad de la Costa, online en toda Latinoamérica.</p>
+    <div class="site-footer__grid">
+      <div class="site-footer__about">
+        <a class="brand" href="./"><svg class="brand__mark" aria-hidden="true"><use href="#knot"/></svg><span><b class="brand__name">Flor Santos</b><small class="brand__role">Bilingual Educator</small></span></a>
+        <p class="site-footer__text">Clases de inglés de a uno. A domicilio en Ciudad de la Costa, online en toda Latinoamérica.</p>
       </div>
       <div>
-        <h4>Servicios</h4>
-        <ul><li><a href="kids/">Teacher Flor · chicos</a></li><li><a href="professionals/">English at Work · profesionales</a></li></ul>
+        <h4 class="site-footer__title">Servicios</h4>
+        <ul class="site-footer__list"><li><a class="site-footer__link" href="kids/">Teacher Flor · chicos</a></li><li><a class="site-footer__link" href="professionals/">English at Work · profesionales</a></li></ul>
       </div>
       <div>
-        <h4>Contacto</h4>
-        <ul><li><a href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.linkedin.com/in/florsantosacosta/" target="_blank" rel="noopener">LinkedIn</a></li><li>Ciudad de la Costa, Canelones</li></ul>
+        <h4 class="site-footer__title">Contacto</h4>
+        <ul class="site-footer__list"><li><a class="site-footer__link" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a></li><li><a class="site-footer__link" href="https://www.linkedin.com/in/florsantosacosta/" target="_blank" rel="noopener">LinkedIn</a></li><li>Ciudad de la Costa, Canelones</li></ul>
       </div>
     </div>
-    <div class="foot-base"><span>© 2026 Flor Santos</span><span>Hecho en la Costa</span></div>
+    <div class="site-footer__base"><span>© 2026 Flor Santos</span><span>Hecho en la Costa</span></div>
   </div>
 </footer>
 

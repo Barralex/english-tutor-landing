@@ -1,0 +1,70 @@
+:root{
+  --navy-900:#262940;
+  --slate-600:#4A4E6D;
+  --slate-500:#5F6073;
+  --lilac-200:#D9D8E5;
+  --gray-500:#A5A7BC;
+  --sand-50:#FBF8F2;
+  --sand-100:#F3ECE0;
+  --sand-200:#E9DFCE;
+  --sand-300:#DCD2C0;
+  --red-600:#B8323A;
+  --red-700:#9A2830;
+  --blue-300:#A9C4DE;
+  --blue-200:#DCE7F1;
+  --green-700:#355E52;
+
+  --color-surface:var(--sand-100);
+  --color-surface-raised:var(--sand-50);
+  --color-surface-sunken:var(--sand-200);
+  --color-text:var(--navy-900);
+  --color-text-muted:var(--slate-500);
+  --color-accent:var(--red-600);
+  --color-accent-strong:var(--red-700);
+  --color-on-accent:#fff;
+  --color-brand:var(--slate-600);
+  --color-border:var(--sand-300);
+  --color-map-area:var(--green-700);
+  --color-map-base:var(--red-600);
+
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;
+  --space-7:28px;
+  --space-8:32px;
+  --space-9:36px;
+  --space-10:40px;
+  --space-12:48px;
+  --space-14:56px;
+  --space-16:64px;
+  --space-18:72px;
+  --space-20:80px;
+  --space-24:96px;
+
+  --font-serif:"Fraunces",Georgia,serif;
+  --font-sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-hand:"Caveat",cursive;
+
+  --text-xs:.74rem;
+  --text-sm:.88rem;
+  --text-md:.96rem;
+  --text-base:1rem;
+  --text-lg:1.14rem;
+  --text-xl:1.3rem;
+  --text-2xl:1.6rem;
+
+  --leading-tight:1.08;
+  --leading-snug:1.2;
+  --leading-base:1.6;
+  --tracking-wide:.18em;
+  --tracking-tight:-.015em;
+
+  --radius:6px;
+  --radius-pill:999px;
+  --wrap:1120px;
+  --header-offset:84px;
+  --measure:60ch;
+}
