@@ -233,7 +233,9 @@ down.
 `fix(deploy): pin pages action`, `docs(claude): record palette change`.
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `chore`.
 
-- **Subject line: 10 words, 15 at the absolute limit.** Detail goes in the body.
+- **Subject line only, never a body.** A commit is one `type(scope): short message`
+  line and nothing after it. 10 words, 15 at the absolute limit. If the change will not
+  fit, split the commit; detail that needs recording belongs in this file, not the history.
 - **No co-author trailers.** The history stays in one name.
 - **Releases are semver tags** — `vMAJOR.MINOR.PATCH`. `feat` moves the minor, `fix`
   moves the patch, a breaking change to the URL structure or the published domain
