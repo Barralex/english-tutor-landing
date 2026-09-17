@@ -10,8 +10,8 @@ No build step, no dependencies, nothing to install. Edit the HTML and push.
 
 ```
 index.html                     home: brand, the two services, who Flor is
-chicos/index.html              Teacher Flor: home visits for kids, coverage map
-profesionales/index.html       English at Work: 6-hour online program for adults
+kids/index.html                Teacher Flor: home visits for kids, coverage map
+professionals/index.html       English at Work: 6-hour online program for adults
 assets/css/site.css            shared styles and palette tokens
 assets/brand/favicon.svg       the thread mark
 assets/brand/og-cover.png      link preview image (placeholder)
@@ -33,7 +33,7 @@ python .github/scripts/check.py
 
 The scaffold assumes `https://barralex.github.io/english-tutor-landing/`. Four places carry that URL: the canonical link, `og:url`, both image tags, and `sitemap.xml`. If a custom domain arrives, add a `CNAME` file with the bare host and change all four together; `check.py` reads `CNAME` and will fail the build if they disagree.
 
-Still pending before launch: Flor's WhatsApp number (every `wa.me/` link is blank), her photos (the two `.portrait` placeholders), the price of the English at Work program, the real coverage polygon in `chicos/index.html`, testimonials, and a real `og-cover.png`.
+Still pending before launch: Flor's WhatsApp number (every `wa.me/` link is blank), a photo of her teaching (`assets/flor-santos.jpg` is the portrait, and it appears on the home page only — on purpose, so it does not lose its effect), the price of the English at Work program, the real coverage polygon in `kids/index.html`, testimonials, and a real `og-cover.png`.
 
 ## Conventions
 

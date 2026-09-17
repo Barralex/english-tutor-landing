@@ -93,11 +93,11 @@ section{padding:96px 0}
 .door-pros h3 em{font-style:italic;color:var(--celeste)}
 .door-pros p,.door-pros li{color:var(--on-dark)}
 
-.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
-.portrait{position:relative;aspect-ratio:4/5;border-radius:var(--r);background:var(--arena-2);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
-.portrait svg{width:62%;color:var(--pizarra);opacity:.35}
-.portrait .pending{position:absolute;left:16px;bottom:14px;font-size:.82rem;color:var(--muted)}
-.portrait .sign{position:absolute;right:18px;top:14px;font-family:var(--hand);font-size:1.9rem;color:var(--ceibo);transform:rotate(-4deg)}
+.about{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:60px;align-items:start}
+.portrait{margin:0;text-align:center}
+.portrait img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;object-position:50% 24%;border-radius:50%;border:1px solid var(--line);background:var(--arena-2)}
+.portrait figcaption{margin-top:14px;font-family:var(--hand);font-size:1.5rem;line-height:1.1;color:var(--ceibo)}
+.portrait figcaption span{display:block;margin-top:6px;font-family:var(--sans);font-size:.86rem;line-height:1.4;color:var(--muted)}
 .about h2{font-size:clamp(2rem,4.2vw,2.9rem);margin-top:12px}
 .about .body p{margin-top:18px;max-width:60ch}
 .facts{display:grid;grid-template-columns:repeat(2,1fr);margin-top:36px;border:1px solid var(--line);border-radius:var(--r);background:var(--papel)}
@@ -106,6 +106,8 @@ section{padding:96px 0}
 .facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}
 .facts b{display:block;font-family:var(--serif);font-weight:400;font-size:2.3rem;line-height:1;color:var(--noche)}
 .facts span{display:block;margin-top:8px;font-size:.92rem;color:var(--muted)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:8px}
+.duo p+p{margin-top:16px}
 .timeline{list-style:none;margin-top:32px;display:grid;gap:0}
 .timeline li{display:grid;grid-template-columns:130px 1fr;gap:18px;padding:14px 0;border-top:1px solid var(--line);font-size:.96rem}
 .timeline li:last-child{border-bottom:1px solid var(--line)}
@@ -231,9 +233,10 @@ section{padding:96px 0}
 
 @media (max-width:900px){
   section{padding:72px 0}
-  .doors,.about,.page-hero .grid,.split,.price,.coverage{grid-template-columns:1fr}
+  .doors,.about,.page-hero .grid,.split,.price,.coverage,.duo{grid-template-columns:1fr}
   .about{gap:36px}
-  .portrait{max-width:420px}
+  .portrait{text-align:left}
+  .portrait img{max-width:260px}
   .cards{grid-template-columns:1fr 1fr}
   .why{grid-template-columns:1fr}
   .why div,.why div+div{padding:26px 0;border-left:0;border-bottom:1px solid rgba(243,236,224,.18)}

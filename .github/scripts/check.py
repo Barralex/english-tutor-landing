@@ -10,7 +10,7 @@ import sys
 from html.parser import HTMLParser
 from urllib.parse import urlparse
 
-PAGES = ["index.html", "chicos/index.html", "profesionales/index.html"]
+PAGES = ["index.html", "kids/index.html", "professionals/index.html"]
 MAX_PAGE_BYTES = 60 * 1024
 
 VOID = {
