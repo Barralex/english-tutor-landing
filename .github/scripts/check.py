@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pre-deploy checks for the page.
+"""Pre-deploy checks for every page of the site.
 
 Runs before anything reaches GitHub Pages. A failure here leaves the
 published site untouched instead of replacing it with a broken one.
@@ -10,7 +10,7 @@ import sys
 from html.parser import HTMLParser
 from urllib.parse import urlparse
 
-PAGE = "index.html"
+PAGES = ["index.html", "chicos/index.html", "profesionales/index.html"]
 MAX_PAGE_BYTES = 60 * 1024
 
 VOID = {
@@ -100,19 +100,24 @@ def local_path(url, base):
 
 
 def main():
-    if not os.path.exists(PAGE):
-        fail("%s is missing" % PAGE)
-        report()
+    for page in PAGES:
+        check_page(page)
+    report()
+
+
+def check_page(page):
+    if not os.path.exists(page):
+        fail("%s is missing" % page)
         return
 
-    raw = open(PAGE, "rb").read()
+    raw = open(page, "rb").read()
     size = len(raw)
     if size > MAX_PAGE_BYTES:
         fail("%s is %d KB, over the %d KB budget. An image pasted back in as "
              "base64 is the usual cause; move it to assets/ instead."
-             % (PAGE, size // 1024, MAX_PAGE_BYTES // 1024))
+             % (page, size // 1024, MAX_PAGE_BYTES // 1024))
     else:
-        note("%s is %d KB of the %d KB budget" % (PAGE, size // 1024, MAX_PAGE_BYTES // 1024))
+        note("%s is %d KB of the %d KB budget" % (page, size // 1024, MAX_PAGE_BYTES // 1024))
 
     html = raw.decode("utf-8")
     doc = Doc()
@@ -120,62 +125,63 @@ def main():
     doc.close()
 
     for msg in doc.unbalanced:
-        fail("Malformed HTML: %s" % msg)
+        fail("%s: malformed HTML: %s" % (page, msg))
     for tag, line in doc.stack:
-        fail("Malformed HTML: <%s> opened on line %d is never closed" % (tag, line))
+        fail("%s: malformed HTML: <%s> opened on line %d is never closed" % (page, tag, line))
 
     base = expected_base()
-    if base:
-        note("expected base is %s" % base)
+    folder = os.path.dirname(page)
 
-    # Local files that the page points at have to exist.
+    # Local files that the page points at have to exist. Paths are
+    # relative to the page, and a folder link means its index.html.
     checked = 0
     for tag, attr, url, line in doc.refs:
         low = url.lower()
         if low.startswith("data:image"):
-            fail("Line %d: <%s> carries an inline base64 image. Put the file in "
-                 "assets/ and reference it by path." % (line, tag))
+            fail("%s line %d: <%s> carries an inline base64 image. Put the file in "
+                 "assets/ and reference it by path." % (page, line, tag))
             continue
         if low.startswith(("http://", "https://", "mailto:", "tel:", "data:", "#", "//")):
             continue
         target = url.split("?")[0].split("#")[0]
         if not target:
             continue
-        if not os.path.exists(target):
-            fail("Line %d: <%s %s=\"%s\"> points at a file that is not in the repo"
-                 % (line, tag, attr, url))
+        path = os.path.normpath(os.path.join(folder, target))
+        if target.endswith("/") or os.path.isdir(path):
+            path = os.path.join(path, "index.html")
+        if not os.path.exists(path):
+            fail("%s line %d: <%s %s=\"%s\"> points at a file that is not in the repo"
+                 % (page, line, tag, attr, url))
         else:
             checked += 1
-    note("%d local references resolve" % checked)
+    note("%s: %d local references resolve" % (page, checked))
 
     # Social preview tags decide what a shared link looks like, and they
     # break silently, so they get checked too.
     for key in ("og:url", "og:image", "og:title", "og:description", "twitter:image"):
         if not doc.meta.get(key):
-            fail("Meta tag %s is missing or empty" % key)
+            fail("%s: meta tag %s is missing or empty" % (page, key))
 
     for key in ("og:url", "og:image", "twitter:image"):
         url = doc.meta.get(key, "")
         if not url:
             continue
         if not url.startswith("https://"):
-            fail("Meta tag %s is \"%s\". Scrapers need an absolute https URL, "
-                 "not a relative path." % (key, url))
+            fail("%s: meta tag %s is \"%s\". Scrapers need an absolute https URL, "
+                 "not a relative path." % (page, key, url))
             continue
         if base and not url.startswith(base):
-            fail("Meta tag %s points at %s but the site is published at %s. "
+            fail("%s: meta tag %s points at %s but the site is published at %s. "
                  "Update the tag, or add a CNAME if the domain moved."
-                 % (key, url, base))
+                 % (page, key, url, base))
 
     for key in ("og:image", "twitter:image"):
         url = doc.meta.get(key, "")
         if url.startswith("https://"):
             rel = local_path(url, base)
             if rel and not os.path.exists(rel):
-                fail("Meta tag %s points at %s, and %s is not in the repo. "
-                     "The link preview would show a broken image." % (key, url, rel))
-
-    report()
+                fail("%s: meta tag %s points at %s, and %s is not in the repo. "
+                     "The link preview would show a broken image." % (page, key, url, rel))
 
 
 def report():
