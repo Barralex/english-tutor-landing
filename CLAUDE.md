@@ -274,4 +274,4 @@ Tracked here because they block the site being useful, not because they are bugs
 
 ---
 
-<p align="center"><sub>co-assisted by <b>Claude Opus 4.8</b></sub></p>
+<p align="center"><sub>co-assisted by <b>Claude Opus 5</b></sub></p>
