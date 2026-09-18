@@ -3,6 +3,13 @@
 @import url("tokens.css") layer(tokens);
 @import url("components.css") layer(components);
 
+/* Page transitions (cross-document View Transitions). The header holds still so moving
+   between pages feels like one site; the content hands over with a short fade and an 8px
+   drift. Browsers without support just navigate. Nothing runs with reduced motion. */
+@media (prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto}
+}
+
 @layer reset{
   *{box-sizing:border-box;margin:0;padding:0}
   img,svg{max-width:100%;display:block}
@@ -43,6 +50,13 @@
   @media (prefers-reduced-motion:reduce){
     *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
   }
+
+  ::view-transition-old(root){animation:page-out .22s cubic-bezier(.4,0,1,1) both}
+  ::view-transition-new(root){animation:page-in .34s cubic-bezier(.2,.8,.2,1) .06s both}
+  ::view-transition-group(site-header){animation-duration:0s}
+
+  @keyframes page-out{to{opacity:0;transform:translateY(-8px)}}
+  @keyframes page-in{from{opacity:0;transform:translateY(8px)}}
 }
 
 @layer layout{

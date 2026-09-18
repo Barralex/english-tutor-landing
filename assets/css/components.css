@@ -3,7 +3,7 @@
 .skip-link{position:absolute;left:-999px;top:var(--space-2);background:var(--navy-900);color:var(--sand-100);padding:var(--space-2) var(--space-4);border-radius:var(--radius);z-index:99}
 .skip-link:focus{left:var(--space-2)}
 
-.site-header{position:sticky;top:0;z-index:50;background:var(--color-surface);border-bottom:1px solid var(--color-border)}
+.site-header{position:sticky;top:0;z-index:50;background:var(--color-surface);border-bottom:1px solid var(--color-border);view-transition-name:site-header}
 .site-header__bar{display:flex;align-items:center;gap:var(--space-8);padding:var(--space-3) 0}
 .site-header__nav{display:flex;gap:var(--space-7);margin-left:auto;font-size:var(--text-base)}
 .site-header__link{color:var(--color-text-muted);padding-block:var(--space-1);border-bottom:2px solid transparent}
@@ -57,31 +57,175 @@
 .actions--tight{margin-top:var(--space-6)}
 
 .thread path{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
-.thread--draw path{stroke-dasharray:1400;animation:thread-draw 3.2s ease-out both}
-
-@keyframes thread-draw{
-  from{stroke-dashoffset:1400}
-  to{stroke-dashoffset:0}
-}
-
-.thread-caption{display:flex;justify-content:space-between;max-width:820px;margin:var(--space-1) auto 0;font-size:1.45rem;color:var(--color-text-muted)}
-
-@media (max-width:640px){
-  .thread-caption{font-size:1.1rem}
-}
-
 .section-head{max-width:720px;margin-bottom:var(--space-12)}
 .section-head__title{margin-top:var(--space-3);font-size:clamp(2rem,4.4vw,3rem)}
 .section-head__text{margin-top:var(--space-4);color:var(--color-text-muted);max-width:var(--measure)}
 
-.home-hero{padding:var(--space-18) 0 var(--space-24)}
-.home-hero__thread{width:100%;max-width:820px;margin:0 auto;color:var(--color-brand)}
-.home-hero__thread path{stroke-width:2.2}
-.home-hero__title{margin-top:var(--space-14);font-size:clamp(2.8rem,8vw,5.8rem);letter-spacing:-.025em}
+.home-hero{padding:var(--space-16) 0 var(--space-24)}
+.home-hero__title{margin-top:var(--space-10);font-size:clamp(2.8rem,8vw,5.8rem);letter-spacing:-.025em}
+.home-hero__place{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2);margin-top:var(--space-6);font-family:var(--font-serif);font-style:italic;font-weight:300;font-size:var(--text-lg);color:var(--color-text-muted)}
+.home-hero__lead{margin-top:var(--space-10);max-width:52ch;font-size:1.5rem;line-height:1.65;color:var(--color-text-muted)}
+.home-hero__actions{align-items:center;margin-top:var(--space-10)}
+.home-hero__place-item{display:inline-flex;align-items:center;gap:var(--space-2);white-space:nowrap}
+.home-hero__flag{width:24px;height:16px;border-radius:2px;box-shadow:0 0 0 1px var(--color-border)}
+.home-hero__globe{width:18px;height:18px;color:var(--color-brand)}
+.home-hero__sep{margin-inline:var(--space-2);color:var(--color-brand)}
+.flag-uy__field{fill:var(--color-flag-field)}
+.flag-uy__stripe{fill:var(--color-flag-stripe)}
+.flag-uy__sun{fill:var(--color-flag-sun)}
 
 @media (max-width:640px){
-  .home-hero{padding:var(--space-12) 0 var(--space-16)}
-  .home-hero__title{margin-top:var(--space-10)}
+  .home-hero{padding:var(--space-10) 0 var(--space-16)}
+  .home-hero__title{margin-top:var(--space-8)}
+  .home-hero__place{font-size:var(--text-md)}
+  .home-hero__lead{margin-top:var(--space-8);font-size:1.2rem}
+  .home-hero__sep{display:none}
+  .home-hero__place{column-gap:var(--space-4)}
+}
+
+/* A chibi tero next to the calls to action, on the hero's 11 s clock: it hops while the
+   thread untangles, then raises both wings and says "I did it!" when the tero lands. */
+.chibi-tero{--chibi-step:40px;width:168px;height:140px;flex-shrink:0;overflow:visible;margin-block:calc(var(--space-8) * -1);animation:chibi-travel 11s linear infinite}
+.chibi-tero__bird{animation:chibi-hop 11s linear infinite;transform-box:fill-box;transform-origin:50% 100%}
+.chibi-tero__body,.chibi-tero__head{fill:var(--color-logo-wing)}
+.chibi-tero__belly{fill:var(--color-logo-ink)}
+.chibi-tero__bib{fill:var(--color-logo-belly)}
+.chibi-tero__arm{fill:var(--color-logo-belly);stroke:var(--color-logo-ink);stroke-width:1.5;transform-box:fill-box}
+.chibi-tero__arm--front{animation:chibi-arm-front 11s linear infinite}
+.chibi-tero__arm--up{opacity:0;animation:chibi-arm-up 11s ease-out infinite;transform-origin:90% 95%}
+.chibi-tero__arm--back{opacity:0;animation:chibi-arm-back 11s ease-out infinite;transform-origin:10% 90%}
+.chibi-tero__crest{fill:var(--color-logo-ink);animation:chibi-crest 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:100% 100%}
+.chibi-tero__mask{fill:var(--color-logo-ink)}
+.chibi-tero__beak{fill:var(--color-logo-beak)}
+.chibi-tero__cheek{fill:var(--color-accent);opacity:.55}
+.chibi-tero__eye-white{fill:var(--color-logo-ink);stroke:var(--color-logo-beak);stroke-width:1.5}
+.chibi-tero__pupil{fill:var(--color-logo-belly)}
+.chibi-tero__glint{fill:var(--color-logo-ink)}
+.chibi-tero__eye{animation:chibi-blink 4s infinite;transform-box:fill-box;transform-origin:50% 50%}
+.chibi-tero__legs{fill:none;stroke:var(--color-logo-beak);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.chibi-tero__say{opacity:0;animation:chibi-say 11s ease-out infinite;transform-box:fill-box;transform-origin:0 100%}
+.chibi-tero__bubble{fill:var(--color-logo-ink)}
+.chibi-tero__words{font-family:var(--font-hand);font-size:22px;font-weight:600;fill:var(--color-logo-belly)}
+@keyframes chibi-travel{0%{opacity:0;transform:translateX(0)}2%{opacity:1;transform:translateX(0)}2.9%{transform:translateX(calc(var(--chibi-step) * 0))}5.4%{transform:translateX(calc(var(--chibi-step) * 1))}7.1%{transform:translateX(calc(var(--chibi-step) * 1))}9.6%{transform:translateX(calc(var(--chibi-step) * 2))}11.3%{transform:translateX(calc(var(--chibi-step) * 2))}13.8%{transform:translateX(calc(var(--chibi-step) * 3))}15.5%{transform:translateX(calc(var(--chibi-step) * 3))}18.0%{transform:translateX(calc(var(--chibi-step) * 4))}19.7%{transform:translateX(calc(var(--chibi-step) * 4))}22.2%{transform:translateX(calc(var(--chibi-step) * 5))}23.9%{transform:translateX(calc(var(--chibi-step) * 5))}26.4%{transform:translateX(calc(var(--chibi-step) * 6))}28.1%{transform:translateX(calc(var(--chibi-step) * 6))}30.6%{transform:translateX(calc(var(--chibi-step) * 7))}32.3%{transform:translateX(calc(var(--chibi-step) * 7))}34.8%{transform:translateX(calc(var(--chibi-step) * 8))}36.5%{transform:translateX(calc(var(--chibi-step) * 8))}39.0%{transform:translateX(calc(var(--chibi-step) * 9))}88%{opacity:1;transform:translateX(calc(var(--chibi-step) * 9))}93%{opacity:0;transform:translateX(calc(var(--chibi-step) * 9))}94%,100%{opacity:0;transform:translateX(0)}}
+@keyframes chibi-hop{0%{transform:none}2.0%{transform:none}2.9%{transform:translateY(0) scale(1.08,.9)}4.1%{transform:translateY(-12px) scale(.95,1.06)}5.4%{transform:translateY(0) scale(1.06,.94)}6.2%{transform:none}7.1%{transform:translateY(0) scale(1.08,.9)}8.3%{transform:translateY(-12px) scale(.95,1.06)}9.6%{transform:translateY(0) scale(1.06,.94)}10.4%{transform:none}11.3%{transform:translateY(0) scale(1.08,.9)}12.5%{transform:translateY(-12px) scale(.95,1.06)}13.8%{transform:translateY(0) scale(1.06,.94)}14.6%{transform:none}15.5%{transform:translateY(0) scale(1.08,.9)}16.7%{transform:translateY(-12px) scale(.95,1.06)}18.0%{transform:translateY(0) scale(1.06,.94)}18.8%{transform:none}19.7%{transform:translateY(0) scale(1.08,.9)}20.9%{transform:translateY(-12px) scale(.95,1.06)}22.2%{transform:translateY(0) scale(1.06,.94)}23.0%{transform:none}23.9%{transform:translateY(0) scale(1.08,.9)}25.1%{transform:translateY(-12px) scale(.95,1.06)}26.4%{transform:translateY(0) scale(1.06,.94)}27.2%{transform:none}28.1%{transform:translateY(0) scale(1.08,.9)}29.3%{transform:translateY(-12px) scale(.95,1.06)}30.6%{transform:translateY(0) scale(1.06,.94)}31.4%{transform:none}32.3%{transform:translateY(0) scale(1.08,.9)}33.5%{transform:translateY(-12px) scale(.95,1.06)}34.8%{transform:translateY(0) scale(1.06,.94)}35.6%{transform:none}36.5%{transform:translateY(0) scale(1.08,.9)}37.7%{transform:translateY(-12px) scale(.95,1.06)}39.0%{transform:translateY(0) scale(1.06,.94)}39.8%{transform:none}43%{transform:translateY(-6px)}86%{transform:translateY(-6px)}90%,100%{transform:none}}
+@keyframes chibi-arm-front{0%,41%{opacity:1}43%,86%{opacity:0}89%,100%{opacity:1}}
+@keyframes chibi-arm-up{0%,41%{opacity:0;transform:rotate(40deg)}44%,52%,60%,68%,76%,86%{opacity:1;transform:none}48%,56%,64%,72%,80%{opacity:1;transform:rotate(14deg)}90%,100%{opacity:0;transform:rotate(40deg)}}
+@keyframes chibi-arm-back{0%,41%{opacity:0;transform:rotate(-40deg)}44%,52%,60%,68%,76%,86%{opacity:1;transform:none}48%,56%,64%,72%,80%{opacity:1;transform:rotate(-14deg)}90%,100%{opacity:0;transform:rotate(-40deg)}}
+@keyframes chibi-say{0%,42%{opacity:0;transform:scale(.3)}44.5%{opacity:1;transform:scale(1.12)}46%,86%{opacity:1;transform:none}89%,100%{opacity:0;transform:scale(.3)}}
+@keyframes chibi-crest{0%,100%{transform:rotate(0)}50%{transform:rotate(-7deg)}}
+@keyframes chibi-blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@media (max-width:640px){.chibi-tero{--chibi-step:20px}}
+@media (prefers-reduced-motion:reduce){.chibi-tero__say,.chibi-tero__arm--back,.chibi-tero__arm--up{display:none}}
+
+/* Hero animation: one 11 s loop on a shared clock. The English above leads; the Spanish
+   below follows each phrase ~110 ms later and leaves when the next arrives. */
+.hero-anim{display:block;width:100%;height:auto;overflow:visible}
+.hero-anim__ink--text{fill:var(--color-text)}
+.hero-anim__ink--brand{fill:var(--color-brand)}
+.hero-anim__ink--accent{fill:var(--color-accent)}
+.hero-anim__ink--muted{fill:var(--color-text-muted)}
+.hero-anim__line--text{stroke:var(--color-text)}
+.hero-anim__line--brand{stroke:var(--color-brand)}
+.hero-anim__hand{font-family:var(--font-hand)}
+.hero-anim__es{font-family:var(--font-serif);font-style:italic;font-weight:300;font-size:24px;fill:var(--color-text-muted)}
+.hero-anim__es--final{font-size:32px;fill:var(--color-text)}
+@keyframes hero-thread{0%,2.0%{stroke-dashoffset:1;opacity:1}40.0%,88.0%{stroke-dashoffset:0;opacity:1}93.0%,100%{stroke-dashoffset:0;opacity:0}}
+.hero-anim__thread{stroke-dasharray:1;animation:hero-thread 11s ease-in-out infinite}
+@keyframes hero-think{0%,2.0%{opacity:0;transform:translateY(12px)}6.0%,88.0%{opacity:1;transform:none}93.0%,100%{opacity:0;transform:translateY(12px)}}
+.hero-anim__think{animation:hero-think 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes hero-junk0{0%,1.0%{opacity:0;transform:translate(0,0) scale(.6)}4.0%{opacity:1}21.0%,100%{opacity:0;transform:translate(-42px,-95px) scale(1.1)}}
+.hero-anim__junk0{animation:hero-junk0 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-junk1{0%,5.5%{opacity:0;transform:translate(0,0) scale(.6)}8.5%{opacity:1}25.5%,100%{opacity:0;transform:translate(14px,-95px) scale(1.1)}}
+.hero-anim__junk1{animation:hero-junk1 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-junk2{0%,10.0%{opacity:0;transform:translate(0,0) scale(.6)}13.0%{opacity:1}30.0%,100%{opacity:0;transform:translate(49px,-95px) scale(1.1)}}
+.hero-anim__junk2{animation:hero-junk2 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-junk3{0%,14.5%{opacity:0;transform:translate(0,0) scale(.6)}17.5%{opacity:1}34.5%,100%{opacity:0;transform:translate(-14px,-95px) scale(1.1)}}
+.hero-anim__junk3{animation:hero-junk3 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-junk4{0%,19.0%{opacity:0;transform:translate(0,0) scale(.6)}22.0%{opacity:1}39.0%,100%{opacity:0;transform:translate(28px,-95px) scale(1.1)}}
+.hero-anim__junk4{animation:hero-junk4 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-junk5{0%,23.5%{opacity:0;transform:translate(0,0) scale(.6)}26.5%{opacity:1}43.5%,100%{opacity:0;transform:translate(0px,-95px) scale(1.1)}}
+.hero-anim__junk5{animation:hero-junk5 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-en0{0%,14.0%{opacity:0;transform:translateY(12px)}18.0%,88.0%{opacity:1;transform:none}93.0%,100%{opacity:0;transform:translateY(12px)}}
+.hero-anim__en0{animation:hero-en0 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes hero-en1{0%,21.0%{opacity:0;transform:translateY(12px)}25.0%,88.0%{opacity:1;transform:none}93.0%,100%{opacity:0;transform:translateY(12px)}}
+.hero-anim__en1{animation:hero-en1 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes hero-en2{0%,27.0%{opacity:0;transform:translateY(12px)}31.0%,88.0%{opacity:1;transform:none}93.0%,100%{opacity:0;transform:translateY(12px)}}
+.hero-anim__en2{animation:hero-en2 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes hero-en3{0%,34.0%{opacity:0;transform:translateY(12px)}38.0%,88.0%{opacity:1;transform:none}93.0%,100%{opacity:0;transform:translateY(12px)}}
+.hero-anim__en3{animation:hero-en3 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes hero-en4{0%,40.0%{opacity:0;transform:translateY(12px)}44.0%,88.0%{opacity:1;transform:none}93.0%,100%{opacity:0;transform:translateY(12px)}}
+.hero-anim__en4{animation:hero-en4 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes hero-tero{0%,42.0%{opacity:0;transform:scale(.3)}46.0%,88.0%{opacity:1;transform:none}93.0%,100%{opacity:0;transform:scale(.3)}}
+.hero-anim__tero{animation:hero-tero 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes hero-es0{0%,3.0%{opacity:0;transform:rotate(-8deg)}5.5%,15.0%{opacity:1;transform:none;filter:none;letter-spacing:0}16.5%,100%{opacity:0;transform:rotate(-8deg)}}
+.hero-anim__es0{animation:hero-es0 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-es1{0%,15.0%{opacity:0;transform:translateY(10px)}17.5%,22.0%{opacity:1;transform:none;filter:none;letter-spacing:0}23.5%,100%{opacity:0;transform:translateY(10px)}}
+.hero-anim__es1{animation:hero-es1 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-es2{0%,22.0%{opacity:0;filter:blur(4px)}24.5%,28.0%{opacity:1;transform:none;filter:none;letter-spacing:0}29.5%,100%{opacity:0;filter:blur(4px)}}
+.hero-anim__es2{animation:hero-es2 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-es3{0%,28.0%{opacity:0;letter-spacing:-.3em}30.5%,35.0%{opacity:1;transform:none;filter:none;letter-spacing:0}36.5%,100%{opacity:0;letter-spacing:-.3em}}
+.hero-anim__es3{animation:hero-es3 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-es4{0%,35.0%{opacity:0;transform:translateY(-14px)}37.5%,41.0%{opacity:1;transform:none;filter:none;letter-spacing:0}42.5%,100%{opacity:0;transform:translateY(-14px)}}
+.hero-anim__es4{animation:hero-es4 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-underline{0%,37.0%{stroke-dashoffset:1;opacity:1}41.0%,41.0%{stroke-dashoffset:0;opacity:1}46.0%,100%{stroke-dashoffset:0;opacity:0}}
+.hero-anim__underline{stroke-dasharray:1;animation:hero-underline 11s ease-in-out infinite}
+@keyframes hero-es5{0%,41.0%{opacity:0;transform:scale(.5)}43.5%,88.0%{opacity:1;transform:none;filter:none;letter-spacing:0}89.5%,100%{opacity:0;transform:scale(.5)}}
+.hero-anim__es5{animation:hero-es5 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-0{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(49px,14px) rotate(0deg)}}
+.hero-anim__confetti-tero-0{animation:hero-confetti-tero-0 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-1{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(46px,57px) rotate(67deg)}}
+.hero-anim__confetti-tero-1{animation:hero-confetti-tero-1 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-2{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(48px,74px) rotate(134deg)}}
+.hero-anim__confetti-tero-2{animation:hero-confetti-tero-2 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-3{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(-4px,63px) rotate(201deg)}}
+.hero-anim__confetti-tero-3{animation:hero-confetti-tero-3 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-4{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(-14px,75px) rotate(268deg)}}
+.hero-anim__confetti-tero-4{animation:hero-confetti-tero-4 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-5{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(-64px,57px) rotate(335deg)}}
+.hero-anim__confetti-tero-5{animation:hero-confetti-tero-5 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-6{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(-44px,35px) rotate(42deg)}}
+.hero-anim__confetti-tero-6{animation:hero-confetti-tero-6 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-7{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(-60px,-5px) rotate(109deg)}}
+.hero-anim__confetti-tero-7{animation:hero-confetti-tero-7 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-8{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(-69px,-19px) rotate(176deg)}}
+.hero-anim__confetti-tero-8{animation:hero-confetti-tero-8 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-9{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(-18px,-32px) rotate(243deg)}}
+.hero-anim__confetti-tero-9{animation:hero-confetti-tero-9 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-10{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(-14px,-47px) rotate(310deg)}}
+.hero-anim__confetti-tero-10{animation:hero-confetti-tero-10 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-11{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(39px,-53px) rotate(17deg)}}
+.hero-anim__confetti-tero-11{animation:hero-confetti-tero-11 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-12{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(31px,-24px) rotate(84deg)}}
+.hero-anim__confetti-tero-12{animation:hero-confetti-tero-12 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-tero-13{0%,45.0%{opacity:0;transform:translate(0,0) rotate(0)}46.5%{opacity:1}61.0%,100%{opacity:0;transform:translate(62px,5px) rotate(151deg)}}
+.hero-anim__confetti-tero-13{animation:hero-confetti-tero-13 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-es-0{0%,43.0%{opacity:0;transform:translate(0,0) rotate(0)}44.5%{opacity:1}59.0%,100%{opacity:0;transform:translate(35px,14px) rotate(0deg)}}
+.hero-anim__confetti-es-0{animation:hero-confetti-es-0 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-es-1{0%,43.0%{opacity:0;transform:translate(0,0) rotate(0)}44.5%{opacity:1}59.0%,100%{opacity:0;transform:translate(27px,50px) rotate(67deg)}}
+.hero-anim__confetti-es-1{animation:hero-confetti-es-1 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-es-2{0%,43.0%{opacity:0;transform:translate(0,0) rotate(0)}44.5%{opacity:1}59.0%,100%{opacity:0;transform:translate(17px,66px) rotate(134deg)}}
+.hero-anim__confetti-es-2{animation:hero-confetti-es-2 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-es-3{0%,43.0%{opacity:0;transform:translate(0,0) rotate(0)}44.5%{opacity:1}59.0%,100%{opacity:0;transform:translate(-20px,43px) rotate(201deg)}}
+.hero-anim__confetti-es-3{animation:hero-confetti-es-3 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-es-4{0%,43.0%{opacity:0;transform:translate(0,0) rotate(0)}44.5%{opacity:1}59.0%,100%{opacity:0;transform:translate(-36px,40px) rotate(268deg)}}
+.hero-anim__confetti-es-4{animation:hero-confetti-es-4 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-es-5{0%,43.0%{opacity:0;transform:translate(0,0) rotate(0)}44.5%{opacity:1}59.0%,100%{opacity:0;transform:translate(-53px,-2px) rotate(335deg)}}
+.hero-anim__confetti-es-5{animation:hero-confetti-es-5 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-es-6{0%,43.0%{opacity:0;transform:translate(0,0) rotate(0)}44.5%{opacity:1}59.0%,100%{opacity:0;transform:translate(-28px,-7px) rotate(42deg)}}
+.hero-anim__confetti-es-6{animation:hero-confetti-es-6 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-es-7{0%,43.0%{opacity:0;transform:translate(0,0) rotate(0)}44.5%{opacity:1}59.0%,100%{opacity:0;transform:translate(-1px,-31px) rotate(109deg)}}
+.hero-anim__confetti-es-7{animation:hero-confetti-es-7 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-es-8{0%,43.0%{opacity:0;transform:translate(0,0) rotate(0)}44.5%{opacity:1}59.0%,100%{opacity:0;transform:translate(17px,-38px) rotate(176deg)}}
+.hero-anim__confetti-es-8{animation:hero-confetti-es-8 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+@keyframes hero-confetti-es-9{0%,43.0%{opacity:0;transform:translate(0,0) rotate(0)}44.5%{opacity:1}59.0%,100%{opacity:0;transform:translate(33px,3px) rotate(243deg)}}
+.hero-anim__confetti-es-9{animation:hero-confetti-es-9 11s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+
+@media (max-width:640px){
+  .hero-anim__detail{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .hero-anim__transient{display:none}
 }
 
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5)}

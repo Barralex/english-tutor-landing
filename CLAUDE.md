@@ -107,7 +107,7 @@ sitemap.xml                    Three URLs; bump lastmod when copy changes
 - **Page theming via a body class.** `.t-kids` and `.t-pros` re-skin shared
   components per page. Add a theme override there rather than duplicating a component.
 - **Inline SVG sprite.** Icons live in a hidden `<svg>` symbol block at the top of
-  each page (`#logo`, `#knot`, `#arrow`, `#chat`) and are used via `<use href="#id">`. Add new
+  each page (`#logo`, `#knot`, `#arrow`, `#chat`; the home page adds `#flag-uy` and `#globe`) and are used via `<use href="#id">`. Add new
   icons to the sprite; never paste a base64 image into the HTML (`check.py` fails the build).
 - **Only two external runtime dependencies**, both from a CDN: Google Fonts in every
   `<head>`, and Leaflet 1.9.4 for the coverage map on the kids page. Adding a third
@@ -140,6 +140,7 @@ one line in `tokens.css`.
 | `--color-brand` | `--blue-300` `#A9C4DE` | Eyebrows, handwriting, threads |
 | `--color-border` | sand at 14% | Every hairline |
 | `--color-positive` | `--green-300` `#8FC1A9` | Check icons in lists |
+| `--color-flag-*` | `--white`, `--uy-blue`, `--uy-sun` | The Uruguay flag icon only |
 | `--color-map-area` / `--color-map-base` | `--green-700` / `--red-600` | Coverage map only |
 | `--color-logo-*` | sand, `--blue-300`, `--red-300` `#E0666D` | The `#logo` symbol and the red *Talk* of the wordmark; `--color-logo-gap` is the ring that separates the bird from the bubble and must match the background |
 
@@ -190,8 +191,30 @@ Base size 17px (16px under 640px), line-height 1.6, measure capped at 58–64ch.
 - `--r: 6px` — one radius everywhere except pills (`999px`).
 - Breakpoints: **900px** (grids collapse to one column) and **640px** (type and padding
   step down), plus a 420px tweak. Test every change at all three.
-- Motion is restrained: 1–3px lifts, a single draw-on animation for the knot.
+- Motion is restrained: 1–3px lifts, and one story told once — the home hero.
   `prefers-reduced-motion` kills all of it — keep that rule intact.
+- **The home hero animation** (`.hero-anim` in `index.html`, keyframes `hero-*` in
+  `components.css`) is one 11 s loop on a shared clock. A thinking figure, doubts escaping the
+  tangle, the thread drawing itself, English phrases growing in confidence (*Hi, → I think… →
+  let me explain. → here's the plan. → Deal.*) and the tero landing with confetti. Under it, a
+  deliberately quieter second layer: one Spanish word at a time (*me trabo, me animo, me sale,
+  me suelto, ya casi, me salió*), small, muted, centred under its English partner, entering
+  ~110 ms after it and leaving when the next arrives. Keep that hierarchy: the Spanish layer
+  never competes with the thread. Under 640px the details (`.hero-anim__detail`) hide; with
+  reduced motion the in-between pieces (`.hero-anim__transient`) hide and the final frame
+  shows still. The SVG carries no hex and no `style` — colours are `hero-anim__ink--*` /
+  `__line--*` token classes. The keyframe percentages were set as one timeline; retime them
+  together, never one in isolation, or the two layers drift out of sync.
+- **Page transitions** are native cross-document View Transitions (`@view-transition` in
+  `site.css`), no JavaScript: the header is pinned (`view-transition-name:site-header`), the
+  content fades with an 8px drift, ~300 ms. Only same-origin navigations over http(s) animate —
+  opening the files straight from disk shows none. Off under reduced motion; unsupported
+  browsers simply navigate.
+- **The chibi tero** (`.chibi-tero`, next to the home CTAs) runs on the same 11 s clock as the
+  hero: it hops forward (squash and stretch, `--chibi-step` per hop) while the thread untangles, and when the tero lands it
+  swaps its folded wing for two raised ones and a bubble says *I did it!* — English on purpose,
+  it is the student speaking. Logo tokens only, so it matches the header. Blink and crest run
+  on their own short loops. Reduced motion leaves it standing still, no bubble.
 
 ### Accessibility floor
 

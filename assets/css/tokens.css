@@ -19,6 +19,9 @@
   --blue-200:#DCE7F1;
   --green-700:#355E52;
   --green-300:#8FC1A9;
+  --white:#FFFFFF;
+  --uy-blue:#2B5BAF;
+  --uy-sun:#F4B400;
 
   --color-surface:var(--navy-800);
   --color-surface-raised:var(--navy-700);
@@ -31,6 +34,9 @@
   --color-brand:var(--blue-300);
   --color-border:rgba(243,236,224,.14);
   --color-positive:var(--green-300);
+  --color-flag-field:var(--white);
+  --color-flag-stripe:var(--uy-blue);
+  --color-flag-sun:var(--uy-sun);
   --color-map-area:var(--green-700);
   --color-map-base:var(--red-600);
   --color-logo-ink:var(--sand-100);
