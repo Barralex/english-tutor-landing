@@ -47,6 +47,6 @@ The brand, the copy and the photography belong to the client and are not covered
 
 **[Luis Barral](https://barral.dev)** &middot; All rights reserved
 
-<sub>co-assisted by <b>Claude Opus 5</b></sub>
+<a href="CLAUDE.md"><img src="assets/brand/signature.svg" height="29" alt="co-assisted by Claude Opus 5"></a>
 
 </div>

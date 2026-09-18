@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="232" height="30" viewBox="0 0 232 30">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#262940"/><stop offset="1" stop-color="#4A4E6D"/></linearGradient><linearGradient id="s" x1="0" x2="1"><stop offset="0" stop-color="#B8323A"/><stop offset=".5" stop-color="#355E52"/><stop offset="1" stop-color="#A9C4DE"/></linearGradient></defs>
+  <rect x=".75" y=".75" width="230.5" height="28.5" rx="14.25" fill="url(#g)" stroke="url(#s)" stroke-width="1.5"/>
+  <g transform="translate(20 15)" fill="#D97757"><path d="M0-6 L1.4-1.4 6 0 1.4 1.4 0 6 -1.4 1.4 -6 0 -1.4-1.4Z"/></g>
+  <text x="124" y="19.5" text-anchor="middle" font-family="-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11.5"><tspan fill="#D9D8E5">co-assisted by </tspan><tspan fill="#FFFFFF" font-weight="600">Claude Opus 5</tspan></text>
+</svg>

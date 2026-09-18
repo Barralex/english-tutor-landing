@@ -79,6 +79,7 @@ assets/brand/favicon.svg       The knot mark
 assets/brand/og-cover.png      Link preview image (PLACEHOLDER — see §7)
 assets/brand/banner.png        README header, repo only
 assets/brand/preview.jpg       README screenshot, repo only
+assets/brand/signature.svg     README footer credit, repo only
 assets/flor-santos.jpg         Portrait, home page only
 robots.txt                     Crawler rules
 LICENSE                        All rights reserved; brand, copy and photos excluded
