@@ -77,8 +77,11 @@ assets/css/tokens.css          Primitives, semantic aliases, spacing and type sc
 assets/css/components.css      Every component block, BEM
 assets/brand/favicon.svg       The knot mark
 assets/brand/og-cover.png      Link preview image (PLACEHOLDER — see §7)
+assets/brand/banner.png        README header, repo only
+assets/brand/preview.jpg       README screenshot, repo only
 assets/flor-santos.jpg         Portrait, home page only
 robots.txt                     Crawler rules
+LICENSE                        MIT, code only; brand, copy and photos excluded
 sitemap.xml                    Three URLs; bump lastmod when copy changes
 .github/scripts/check.py       Pre-deploy gate (see §5)
 .github/workflows/deploy.yml   GitHub Pages deploy
