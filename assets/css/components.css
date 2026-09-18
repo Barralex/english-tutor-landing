@@ -261,7 +261,18 @@
 .path:focus-visible{outline-offset:-6px}
 .path--kids{--color-surface:var(--blue-300);--color-surface-raised:var(--blue-200);--color-text:var(--navy-900);--color-text-muted:var(--navy-600);--color-accent:var(--red-600);--color-brand:var(--navy-600)}
 .path--work{--color-surface:var(--navy-900);--color-surface-raised:var(--navy-700);--color-text:var(--sand-100);--color-text-muted:var(--lilac-200);--color-accent:var(--red-200);--color-on-accent:var(--navy-900);--color-brand:var(--blue-300)}
-.path__inner{display:grid;grid-template-columns:330px 1fr auto;align-items:center;gap:var(--space-10);padding-block:var(--space-8)}
+.path__inner{display:grid;grid-template-columns:330px 1fr auto;align-items:center;gap:var(--space-10);padding-block:var(--space-16)}
+/* The seam between the strips is a wave, not a rule. The work strip rides up by twice --seam, over
+   the kids strip's extra padding, and a mask cuts its top edge to the curve, so its background, sweep and grey state all follow it.
+   The mask is alpha only: the keyword colours in it never reach the screen. A medallion with
+   the logo sits where the wave crosses the old boundary, outside both strips' filters. */
+.paths{--seam:var(--space-10)}
+.path--kids .path__inner{padding-bottom:calc(var(--space-16) + 2 * var(--seam))}
+.path--work{margin-top:calc(-2 * var(--seam));-webkit-mask:var(--wave) top/100% calc(2 * var(--seam)) no-repeat,linear-gradient(black 0 0) 0 calc(2 * var(--seam) - 1px)/100% 100% no-repeat;mask:var(--wave) top/100% calc(2 * var(--seam)) no-repeat,linear-gradient(black 0 0) 0 calc(2 * var(--seam) - 1px)/100% 100% no-repeat;--wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath d='M0 24C300 0 420 0 720 24S1140 48 1440 24V48H0Z'/%3E%3C/svg%3E")}
+.path--work .path__inner{padding-top:calc(var(--space-16) + 2 * var(--seam))}
+.paths__seam{position:relative;z-index:2;height:0}
+.paths__medal{position:absolute;left:50%;top:calc(-1 * var(--seam));display:grid;place-items:center;width:var(--space-20);height:var(--space-20);border:1.5px solid var(--color-text);border-radius:50%;background:var(--color-surface);box-shadow:0 10px 24px -10px color-mix(in srgb,var(--navy-900) 55%,transparent);transform:translate(-50%,-50%);--color-logo-gap:var(--color-surface)}
+.paths__medal-logo{width:var(--space-12);height:var(--space-12)}
 /* The active path is the one the picker shows: it grows a touch and the other goes grey.
    Hover devices only — on touch nothing hovers, and a grey strip would read as disabled. */
 @media (hover:hover){
@@ -331,13 +342,20 @@
 
 @media (max-width:900px){
   .paths__head{padding-block:var(--space-14) var(--space-10)}
-  .path__inner{grid-template-columns:255px 1fr;gap:var(--space-6) var(--space-8)}
+  .path__inner{grid-template-columns:255px 1fr;gap:var(--space-6) var(--space-8);padding-block:var(--space-12)}
+  .path--kids .path__inner{padding-bottom:calc(var(--space-12) + 2 * var(--seam))}
+  .path--work .path__inner{padding-top:calc(var(--space-12) + 2 * var(--seam))}
   .path__go{grid-column:2;justify-self:start}
 }
 
 @media (max-width:640px){
   .paths__head{padding-block:var(--space-12) var(--space-10)}
-  .path__inner{grid-template-columns:1fr;padding-block:var(--space-8)}
+  .paths{--seam:var(--space-5)}
+  .paths__medal{width:var(--space-16);height:var(--space-16)}
+  .paths__medal-logo{width:var(--space-10);height:var(--space-10)}
+  .path__inner{grid-template-columns:1fr;padding-block:var(--space-10)}
+  .path--kids .path__inner{padding-bottom:calc(var(--space-10) + 2 * var(--seam))}
+  .path--work .path__inner{padding-top:calc(var(--space-10) + 2 * var(--seam))}
   .path__art{width:255px}
   .path__go-ring{width:60px;height:60px}
   .path__go{grid-column:auto}

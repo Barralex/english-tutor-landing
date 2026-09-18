@@ -220,7 +220,12 @@ Base size 17px (16px under 640px), line-height 1.6, measure capped at 58–64ch.
   across and turns it navy, and the matching strip sweeps. The picker drives the strips: the
   active one scales its content to 105 % and the other goes grayscale at 55 % opacity. That
   runs only under `(hover:hover)` — on touch nothing hovers and a grey strip reads as disabled.
-  The scenes sit in a 330px column (255px at 900px and 640px). The ring arrow nudges forward
+  The scenes sit in a 330px column (255px at 900px and 640px). The strips are tall (64px of
+  padding, 48 / 40 at the breakpoints) and the seam between them is a wave, not a rule: the work
+  strip rides up by twice `--seam` (40px, 20px under 640px) and a CSS mask cuts its top edge to
+  the curve, so its background, sweep and grey state follow it. A sand medallion with the logo
+  (`.paths__medal`) sits where the wave crosses the old boundary, outside both strips' filters so
+  it never goes grey. The two mask layers overlap by 1px; butting them leaves a hairline. The ring arrow nudges forward
   at 45 %, when the tero lands; on hover the ring fills with the accent and the arrow passes
   through and comes back. The kids scene: Flor's car drives to the house (3–38 %) and the tero lands on the roof
   at 42 %, with the hero's tero. The work scene: the call bubble says *Hi,* → *let me explain.* →
