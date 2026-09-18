@@ -42,7 +42,8 @@ The home page (`/`) carries the shared brand and acts as a **splitter**: it
 establishes who Flor is, then sends each visitor down one of two paths. The
 section is a sentence the visitor finishes — *Busco inglés para (mi hijo | mí)*, a segmented
 pill whose active option takes the colours of its strip — followed by one full-width strip per service: one headline,
-one line of facts, and an arrow in a ring instead of a button. No cards, no bullet lists, no
+one line of facts, a scene, and an arrow in a ring instead of a button. No eyebrow, no sub-line: the
+question is the whole head, kept short. No cards, no bullet lists, no
 pitch; the selling happens on the service page. A visitor
 should reach the right page in one click and never see the other offer's pricing or
 objections.
@@ -215,8 +216,11 @@ Base size 17px (16px under 640px), line-height 1.6, measure capped at 58–64ch.
   in `components.css`) run on the hero's 11 s clock. The picker never moves on its own — a
   selector that changes by itself reads as broken. It is a segmented control: one option is
   always active — on a thumb in its strip's colours, 10 % larger — and the other sits in grey.
-  *mi hijo* is active at rest; hovering or focusing *mí* slides the thumb across and turns it
-  navy, and the matching strip sweeps. The ring arrow nudges forward
+  *mi hijo* is active at rest; hovering or focusing *mí* (or the work strip) slides the thumb
+  across and turns it navy, and the matching strip sweeps. The picker drives the strips: the
+  active one scales its content to 105 % and the other goes grayscale at 55 % opacity. That
+  runs only under `(hover:hover)` — on touch nothing hovers and a grey strip reads as disabled.
+  The scenes sit in a 330px column (255px at 900px and 640px). The ring arrow nudges forward
   at 45 %, when the tero lands; on hover the ring fills with the accent and the arrow passes
   through and comes back. The kids scene: Flor's car drives to the house (3–38 %) and the tero lands on the roof
   at 42 %, with the hero's tero. The work scene: the call bubble says *Hi,* → *let me explain.* →
