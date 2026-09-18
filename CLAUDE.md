@@ -24,9 +24,9 @@ visitor into a WhatsApp conversation with Flor.
 One umbrella brand, two distinct businesses, kept apart on purpose.
 
 **TeroTalk** is the name on the header, the footer and the domain. Flor Santos is
-the person behind it and stays visible everywhere — the brand lockup reads
-*TeroTalk · con Flor Santos*, and the home page explains the name once, in her
-voice, in the "Quién enseña" section. The brand never replaces the person:
+the person behind it and stays visible everywhere. The lockup is the logo and the
+word *TeroTalk* alone; Flor carries the rest — "Sobre Flor" in the nav, and the home
+page explains the name once, in her voice, in the "Quién enseña" section. The brand never replaces the person:
 §2 Positioning depends on a named human, so a change that hides Flor is a
 regression, not a rebrand.
 
@@ -75,7 +75,10 @@ professionals/index.html       English at Work: the 6-hour program
 assets/css/site.css            Entry: layer order, imports, reset, base, layout, utilities
 assets/css/tokens.css          Primitives, semantic aliases, spacing and type scales
 assets/css/components.css      Every component block, BEM
-assets/brand/favicon.svg       The knot mark
+assets/brand/favicon.svg       The logo on a sand tile
+assets/brand/logo.svg          Logo: tero nesting in a TT speech bubble, wing raised (logo-dark.svg for navy)
+assets/brand/logo.png          1024px exports of the logo, light and dark, for use outside the site
+assets/brand/quality-seal.svg  Quality seal, not used on the site yet (see §7); PNG exports beside it
 assets/brand/og-cover.png      Link preview image (PLACEHOLDER — see §7)
 assets/brand/banner.png        README header, repo only
 assets/brand/preview.jpg       README screenshot, repo only
@@ -103,7 +106,7 @@ sitemap.xml                    Three URLs; bump lastmod when copy changes
 - **Page theming via a body class.** `.t-kids` and `.t-pros` re-skin shared
   components per page. Add a theme override there rather than duplicating a component.
 - **Inline SVG sprite.** Icons live in a hidden `<svg>` symbol block at the top of
-  each page (`#knot`, `#arrow`, `#chat`) and are used via `<use href="#id">`. Add new
+  each page (`#logo`, `#knot`, `#arrow`, `#chat`) and are used via `<use href="#id">`. Add new
   icons to the sprite; never paste a base64 image into the HTML (`check.py` fails the build).
 - **Only two external runtime dependencies**, both from a CDN: Google Fonts in every
   `<head>`, and Leaflet 1.9.4 for the coverage map on the kids page. Adding a third
@@ -136,6 +139,7 @@ one line in `tokens.css`.
 | `--color-brand` | `--slate-600` `#4A4E6D` | Eyebrows, handwriting, brand mark |
 | `--color-border` | `--sand-300` `#DCD2C0` | Every hairline |
 | `--color-map-area` / `--color-map-base` | `--green-700` / `--red-600` | Coverage map only |
+| `--color-logo-*` | navy, slate, sand, `--red-600` | The `#logo` symbol and the red *Talk* of the wordmark; `--color-logo-gap` is the ring that separates the bird from the bubble and must match the background. `.site-footer` rebinds them, with `--red-300` `#E0666D` for the beak |
 
 **Dark sections never override a component.** `.band--dark`, `.page-hero--dark` and
 `.site-footer` rebind the semantic tokens on themselves, so every component inside adapts
@@ -162,6 +166,10 @@ linking it; as a plain link it silently won over the map styles.
 | `--serif` | **Fraunces** (300/400, optical sizing, italic) | All headings. Weight 300, tight tracking, italic `<em>` for the coloured emphasis |
 | `--sans` | **Figtree** (400/500/600) | Body, UI, labels |
 | `--hand` | **Caveat** (600) | Handwritten notes only — brand sub-line, hero margin notes, portrait caption. Never body copy |
+
+The wordmark is the one exception to weight 300: *Tero* in Fraunces 650 with `SOFT 100` and
+`WONK 1`, *Talk* in italic 500 in the logo red (`.brand__name`, `.brand__talk`). The
+Google Fonts link loads Fraunces as a variable range with both axes for that reason.
 
 Base size 17px (16px under 640px), line-height 1.6, measure capped at 58–64ch.
 
@@ -271,6 +279,7 @@ Tracked here because they block the site being useful, not because they are bugs
 | Price of the English at Work program | `professionals/index.html`, `.amount.tbd` | Placeholder text |
 | Real coverage polygon | `kids/index.html`, `zona` array in the map script | Approximated by hand |
 | Real `og-cover.png` | `assets/brand/` | Placeholder |
+| Quality seal | `assets/brand/quality-seal.*` | Drawn, not placed. Its SVG text needs Fraunces and Figtree loaded; outline it before using it off-site |
 | Testimonials | all pages | None yet — do not invent any |
 | Photo of Flor teaching | `assets/` | Only the portrait exists; it stays home-page-only on purpose |
 | `terotalk.com` DNS | domain registrar | Not pointed at GitHub Pages; until it is, no `CNAME` file |

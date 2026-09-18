@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs>
+    <path id="seal-top" d="M36 120 A84 84 0 0 1 204 120"/>
+    <path id="seal-bot" d="M30 120 A90 90 0 0 0 210 120"/>
+  </defs>
+  <circle fill="#F3ECE0" cx="120" cy="120" r="112"/>
+  <circle fill="none" stroke="#262940" stroke-width="1.2" cx="120" cy="120" r="104"/>
+  <circle fill="none" stroke="#B8323A" stroke-width="2.4" stroke-dasharray="7 5" stroke-linecap="round" cx="120" cy="120" r="66"/>
+  <text fill="#262940" style="font-family:Figtree,system-ui,sans-serif;font-size:14px;font-weight:600;letter-spacing:4px"><textPath href="#seal-top" startOffset="50%" style="text-anchor:middle">INGLÉS UNO A UNO</textPath></text>
+  <text fill="#262940" style="font-family:Figtree,system-ui,sans-serif;font-size:13px;font-weight:600;letter-spacing:3.6px"><textPath href="#seal-bot" startOffset="50%" style="text-anchor:middle">SOLYMAR · URUGUAY</textPath></text>
+  <circle fill="#B8323A" cx="24" cy="120" r="3"/>
+  <circle fill="#B8323A" cx="216" cy="120" r="3"/>
+  <g transform="translate(77.5 47) scale(.38)">
+  <g fill="none" stroke="#B8323A" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M117 148 L110 181 L114 211 H127 M114 211 L108 212"/>
+    <path d="M131 148 L129 181 L140 211 H153 M140 211 L134 212"/>
+  </g>
+  <path fill="#4A4E6D" d="M136 64 C136 52 144 46 152 46 C162 47 167 56 166 66 C165 78 164 88 168 100 C174 114 172 128 162 138 C150 150 128 154 106 150 C84 146 62 138 40 128 C60 124 82 114 102 106 C116 100 128 98 138 96 C136 86 136 76 136 64 Z"/>
+  <path fill="#FBF8F2" d="M170 116 C168 130 160 142 146 148 C132 153 114 153 100 149 C116 142 130 132 140 122 C150 118 160 116 170 116 Z"/>
+  <path fill="none" stroke="#262940" stroke-width="2.6" stroke-linecap="round" d="M170 118 C168 131 160 142 146 148 C132 153 116 153 102 150"/>
+  <path fill="#262940" d="M153 80 C150 88 144 94 138 97 C146 102 156 110 170 118 C172 110 170 104 167 99 C164 92 163 86 162 80 Z"/>
+  <path fill="#262940" d="M152 104 C136 104 110 112 90 120 C72 128 56 132 34 131 C52 142 82 146 106 142 C128 138 148 126 152 104 Z"/>
+  <path fill="#B8323A" d="M149 104 L156 100 L153 108 Z"/>
+  <path fill="none" stroke="#262940" stroke-width="2.4" stroke-linecap="round" d="M86 217 H172"/>
+  
+  <path fill="#262940" d="M146 49 C130 33 108 27 86 32 C106 34 124 42 140 56 Z"/>
+  <path fill="#262940" d="M143 54 C131 45 117 42 104 44 C118 47 130 53 139 61 Z"/>
+  <circle fill="#4A4E6D" cx="150" cy="62" r="16"/>
+  <path fill="#262940" d="M165 56 C163 50 157 46 151 47 C156 52 158 58 158 64 C158 70 156 76 153 80 L162 80 C164 74 166 64 165 56 Z"/>
+  <path fill="#B8323A" d="M163 56 L189 62.5 L163 67 Z"/>
+  <path fill="#262940" d="M180 60.3 L189 62.5 L180 64.1 Z"/>
+  <circle fill="#FBF8F2" cx="152" cy="58" r="4.6"/>
+  <circle fill="#B8323A" cx="152" cy="58" r="3.3"/>
+  <circle fill="#262940" cx="152.6" cy="58" r="1.4"/></g>
+  <text x="120" y="157" fill="#262940" style="font-family:Fraunces,Georgia,serif;font-size:20px;font-weight:400;letter-spacing:-.3px;text-anchor:middle">TeroTalk</text>
+</svg>

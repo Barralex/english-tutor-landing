@@ -10,6 +10,7 @@
   --sand-300:#DCD2C0;
   --red-600:#B8323A;
   --red-700:#9A2830;
+  --red-300:#E0666D;
   --blue-300:#A9C4DE;
   --blue-200:#DCE7F1;
   --green-700:#355E52;
@@ -26,6 +27,13 @@
   --color-border:var(--sand-300);
   --color-map-area:var(--green-700);
   --color-map-base:var(--red-600);
+  --color-logo-ink:var(--navy-900);
+  --color-logo-wing:var(--slate-600);
+  --color-logo-belly:var(--sand-50);
+  --color-logo-beak:var(--red-600);
+  --color-logo-bubble:var(--navy-900);
+  --color-logo-letters:var(--sand-100);
+  --color-logo-gap:var(--color-surface);
 
   --space-1:4px;
   --space-2:8px;
@@ -65,6 +73,6 @@
   --radius:6px;
   --radius-pill:999px;
   --wrap:1120px;
-  --header-offset:84px;
+  --header-offset:96px;
   --measure:60ch;
 }
