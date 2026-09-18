@@ -228,44 +228,110 @@
   .hero-anim__transient{display:none}
 }
 
-.doors{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5)}
+/* Two paths. The heading is a question the visitor answers: two pills, each in its strip's
+   colours, finish the sentence and go straight to the page. Below, one full-width strip per
+   service, each with a small scene on the hero's 11 s clock: Flor's car reaches the house and
+   the tero lands; on the call, the bubble goes from "Hi," to "Deal." as the voice grows. */
+.paths{padding:0;border-bottom:0;background:none}
+.paths__head{padding-block:var(--space-24) var(--space-16);background:var(--color-surface)}
+.paths__ask{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3) var(--space-5);margin-top:var(--space-4)}
+.paths__title,.picker{font-size:clamp(2.2rem,5.4vw,4rem)}
+.paths__text{margin-top:var(--space-6);max-width:var(--measure);font-size:var(--text-lg);color:var(--color-text-muted)}
 
-.door{
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  min-height:440px;
-  padding:var(--space-10);
-  border-radius:var(--radius);
-  transition:transform .2s ease;
-}
-.door:hover{transform:translateY(-3px)}
-.door__label{font-size:var(--text-xs);font-weight:600;letter-spacing:var(--tracking-wide);text-transform:uppercase}
-.door__title{margin-top:var(--space-3);font-size:clamp(2rem,3.6vw,2.7rem)}
-.door__text{margin-top:var(--space-5);max-width:40ch}
-.door__list{margin-top:var(--space-6);display:grid;gap:var(--space-2);font-size:var(--text-md)}
-.door__item{display:flex;gap:var(--space-3)}
-.door__item::before{content:"";flex:none;width:7px;height:7px;margin-top:10px;border-radius:50%;background:currentColor;opacity:.55}
-.door__cta{margin-top:auto;padding-top:var(--space-7);display:flex;align-items:center;gap:var(--space-2);font-weight:600}
-.door__arrow{width:20px;height:20px;transition:transform .2s ease}
-.door:hover .door__arrow{transform:translateX(4px)}
+/* Segmented picker: one option is always the active one — lit in its strip's colours and
+   larger — while the other waits in grey. "mi hijo" is active at rest; hovering or focusing
+   "mí" slides the thumb across. It never moves on its own. */
+.picker{--picker-thumb:var(--blue-300);--picker-on:var(--navy-900);position:relative;display:inline-grid;grid-template-columns:1fr 1fr;padding:var(--space-1);border:1.5px solid var(--color-text);border-radius:var(--radius-pill);font-family:var(--font-serif);font-style:italic;font-weight:300;line-height:1.1;letter-spacing:var(--tracking-tight)}
+.picker__thumb{position:absolute;inset-block:var(--space-1);left:var(--space-1);width:calc(50% - var(--space-1));border-radius:inherit;background:var(--picker-thumb);box-shadow:0 10px 24px -10px color-mix(in srgb,var(--navy-900) 55%,transparent);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .45s ease}
+.picker__option{position:relative;display:grid}
+.picker__face{padding:.08em .7em .16em;text-align:center;white-space:nowrap;pointer-events:none;transition:transform .45s cubic-bezier(.2,.8,.2,1),color .3s ease,opacity .3s ease}
+.picker__option--kids .picker__face{color:var(--picker-on);transform:scale(1.1)}
+.picker__option--work .picker__face{color:var(--color-text-muted);opacity:.55}
+.picker:has(.picker__option--work:is(:hover,:focus-visible)){--picker-thumb:var(--navy-900);--picker-on:var(--sand-100)}
+.picker:has(.picker__option--work:is(:hover,:focus-visible)) .picker__thumb{transform:translateX(100%)}
+.picker:has(.picker__option--work:is(:hover,:focus-visible)) .picker__option--kids .picker__face{color:var(--color-text-muted);opacity:.55;transform:none}
+.picker:has(.picker__option--work:is(:hover,:focus-visible)) .picker__option--work .picker__face{color:var(--picker-on);opacity:1;transform:scale(1.1)}
 
-.door--kids{background:var(--blue-300);color:var(--navy-900)}
-.door--kids .door__label{color:var(--red-700)}
-.door--kids .door__title em{color:var(--red-600)}
+.path{position:relative;isolation:isolate;display:block;overflow:hidden;background:var(--color-surface);color:var(--color-text);--color-logo-gap:var(--color-surface)}
+.path::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--color-surface-raised);clip-path:inset(0 100% 0 0);transition:clip-path .6s cubic-bezier(.2,.8,.2,1)}
+.path:hover::before,
+.path:focus-visible::before,
+.paths:has(.picker__option--kids:hover) .path--kids::before,
+.paths:has(.picker__option--work:hover) .path--work::before{clip-path:inset(0)}
+.path:hover{--color-logo-gap:var(--color-surface-raised)}
+.path:focus-visible{outline-offset:-6px}
+.path--kids{--color-surface:var(--blue-300);--color-surface-raised:var(--blue-200);--color-text:var(--navy-900);--color-text-muted:var(--navy-600);--color-accent:var(--red-600);--color-brand:var(--navy-600)}
+.path--work{--color-surface:var(--navy-900);--color-surface-raised:var(--navy-700);--color-text:var(--sand-100);--color-text-muted:var(--lilac-200);--color-accent:var(--red-200);--color-on-accent:var(--navy-900);--color-brand:var(--blue-300)}
+.path__inner{display:grid;grid-template-columns:220px 1fr auto;align-items:center;gap:var(--space-12);padding-block:var(--space-8)}
+.path__art{width:100%;height:auto;overflow:visible;transition:transform .3s ease}
+.path:hover .path__art{transform:translateY(-3px)}
+.path__label{display:flex;align-items:baseline;gap:var(--space-3);font-size:var(--text-xs);font-weight:600;letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--color-brand)}
+.path__index{font-family:var(--font-serif);font-style:italic;font-weight:400;font-size:var(--text-lg);letter-spacing:0;color:var(--color-accent)}
+.path__title{margin-top:var(--space-2);font-size:clamp(1.7rem,3vw,2.35rem)}
+.path__title em{font-style:italic;color:var(--color-accent)}
+.path__meta{margin-top:var(--space-3);font-size:var(--text-md);color:var(--color-text-muted)}
+.path__sep{margin-inline:var(--space-3);color:var(--color-accent)}
+.path__go{display:flex;align-items:center;gap:var(--space-4);font-size:var(--text-sm);font-weight:600;letter-spacing:.02em;white-space:nowrap}
+.path__go-ring{position:relative;display:grid;place-items:center;width:72px;height:72px;flex:none;overflow:hidden;border:1.5px solid var(--color-text);border-radius:50%;isolation:isolate}
+.path__go-ring::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--color-accent);clip-path:circle(0 at 50% 50%);transition:clip-path .45s cubic-bezier(.2,.8,.2,1)}
+.path__go-arrow{width:26px;height:26px;animation:path-nudge 11s ease-in-out infinite}
+.path:hover .path__go-ring,.path:focus-visible .path__go-ring{border-color:var(--color-accent)}
+.path:hover .path__go-ring::before,.path:focus-visible .path__go-ring::before{clip-path:circle(75% at 50% 50%)}
+.path:hover .path__go-arrow,.path:focus-visible .path__go-arrow{color:var(--color-on-accent);animation:path-through .55s cubic-bezier(.6,0,.2,1)}
+@keyframes path-nudge{0%,42%{transform:none}45%{transform:translateX(9px)}48%{transform:none}50%{transform:translateX(5px)}53%,100%{transform:none}}
+@keyframes path-through{0%{transform:none}45%{transform:translateX(56px)}46%{transform:translateX(-56px)}100%{transform:none}}
 
-.door--pros{background:var(--navy-900);color:var(--sand-100)}
-.door--pros .door__label{color:var(--blue-300)}
-.door--pros .door__title em{color:var(--blue-300)}
-.door--pros .door__text,.door--pros .door__item{color:var(--lilac-200)}
+.ride__road{fill:none;stroke:var(--color-text);stroke-width:2;stroke-linecap:round;stroke-dasharray:1 9;opacity:.5}
+.ride__house{fill:var(--color-surface-raised);stroke:var(--color-text);stroke-width:2;stroke-linejoin:round}
+.ride__roof{fill:none;stroke:var(--color-text);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.ride__door,.ride__body,.ride__wheel circle{fill:var(--color-text)}
+.ride__window,.ride__glass{fill:var(--color-surface)}
+.ride__wheel path{fill:none;stroke:var(--color-surface);stroke-width:1.6;stroke-linecap:round}
+.ride__car{transform:translateX(104px);animation:ride-drive 11s cubic-bezier(.45,0,.25,1) infinite}
+.ride__wheel{transform-box:fill-box;transform-origin:50% 50%;animation:ride-spin 11s cubic-bezier(.45,0,.25,1) infinite}
+.ride__exhaust{opacity:0;animation:ride-exhaust 11s linear infinite}
+.ride__puff{fill:var(--color-text);transform-box:fill-box;transform-origin:50% 50%;animation:ride-puff .9s ease-out infinite}
+.ride__puff--late{animation-delay:-.45s}
+.ride__tero{transform-box:fill-box;transform-origin:50% 100%;animation:ride-tero 11s ease-out infinite}
+@keyframes ride-drive{0%{opacity:0;transform:translateX(0)}3%{opacity:1;transform:translateX(0)}38%,88%{opacity:1;transform:translateX(104px)}93%{opacity:0;transform:translateX(104px)}100%{opacity:0;transform:translateX(0)}}
+@keyframes ride-spin{0%,3%{transform:rotate(0)}38%,100%{transform:rotate(720deg)}}
+@keyframes ride-exhaust{0%,3%{opacity:0}6%,34%{opacity:1}39%,100%{opacity:0}}
+@keyframes ride-puff{from{opacity:.45;transform:translate(0,0) scale(.5)}to{opacity:0;transform:translate(-14px,-7px) scale(1.5)}}
+@keyframes ride-tero{0%,40%{opacity:0;transform:translateY(10px) scale(.4)}44%{opacity:1;transform:translateY(-4px) scale(1.08)}46%,88%{opacity:1;transform:none}92%,100%{opacity:0;transform:translateY(10px) scale(.4)}}
+
+.call__screen{fill:var(--color-surface-raised);stroke:var(--color-text-muted);stroke-width:2}
+.call__base{fill:var(--color-text-muted)}
+.call__cam{fill:var(--color-accent)}
+.call__person{fill:var(--color-brand)}
+.call__bar{fill:var(--color-accent);transform-box:fill-box;transform-origin:50% 100%;animation:call-bar .45s ease-in-out infinite alternate}
+.call__bar--mid{animation-delay:-.15s}
+.call__bar--late{animation-delay:-.3s}
+.call__voice{transform-box:fill-box;transform-origin:50% 100%;animation:call-voice 11s ease-in-out infinite}
+.call__balloon{fill:var(--color-text)}
+.call__line{font-family:var(--font-serif);font-style:italic;font-size:15px;fill:var(--color-surface)}
+.call__bubble{transform-box:fill-box;transform-origin:0 100%;animation:call-bubble 11s ease-out infinite}
+.call__line--hi{opacity:0;animation:call-hi 11s ease infinite}
+.call__line--explain{opacity:0;animation:call-explain 11s ease infinite}
+.call__line--deal{transform-box:fill-box;transform-origin:50% 50%;animation:call-deal 11s ease-out infinite}
+@keyframes call-bar{from{transform:scaleY(.35)}to{transform:none}}
+@keyframes call-voice{0%,10%{transform:scaleY(.15)}40%,88%{transform:none}94%,100%{transform:scaleY(.15)}}
+@keyframes call-bubble{0%,10%{opacity:0;transform:scale(.5)}13%,88%{opacity:1;transform:none}92%,100%{opacity:0;transform:scale(.5)}}
+@keyframes call-hi{0%,12%{opacity:0}14%,23%{opacity:1}25%,100%{opacity:0}}
+@keyframes call-explain{0%,25%{opacity:0}27%,38%{opacity:1}40%,100%{opacity:0}}
+@keyframes call-deal{0%,40%{opacity:0;transform:scale(.6)}43%{opacity:1;transform:scale(1.15)}45%,88%{opacity:1;transform:none}90%,100%{opacity:0}}
 
 @media (max-width:900px){
-  .doors{grid-template-columns:1fr}
-  .door{min-height:0}
+  .paths__head{padding-block:var(--space-18) var(--space-14)}
+  .path__inner{grid-template-columns:170px 1fr;gap:var(--space-6) var(--space-8)}
+  .path__go{grid-column:2;justify-self:start}
 }
 
 @media (max-width:640px){
-  .door{padding:var(--space-7) var(--space-6)}
+  .paths__head{padding-block:var(--space-16) var(--space-12)}
+  .path__inner{grid-template-columns:1fr;padding-block:var(--space-8)}
+  .path__art{width:170px}
+  .path__go-ring{width:60px;height:60px}
+  .path__go{grid-column:auto}
 }
 
 .about{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:var(--space-14);align-items:start}

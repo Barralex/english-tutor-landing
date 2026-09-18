@@ -39,9 +39,13 @@ regression, not a rebrand.
 | Proof | Classroom experience (The British Schools, IB PYP/MYP) | Same credentials, reframed for business |
 
 The home page (`/`) carries the shared brand and acts as a **splitter**: it
-establishes who Flor is, then sends each visitor through one of two "doors."
-A visitor should reach the right page in one click and never see the other
-offer's pricing or objections.
+establishes who Flor is, then sends each visitor down one of two paths. The
+section is a sentence the visitor finishes — *Busco inglés para (mi hijo | mí)*, a segmented
+pill whose active option takes the colours of its strip — followed by one full-width strip per service: one headline,
+one line of facts, and an arrow in a ring instead of a button. No cards, no bullet lists, no
+pitch; the selling happens on the service page. A visitor
+should reach the right page in one click and never see the other offer's pricing or
+objections.
 
 ### Positioning
 
@@ -69,7 +73,7 @@ keeps the repo legible, and means the site can never break because of a
 dependency update.
 
 ```
-index.html                     Home: brand, the two doors, who Flor is
+index.html                     Home: brand, the two paths, who Flor is
 kids/index.html                Teacher Flor: in-home lessons, coverage map
 professionals/index.html       English at Work: the 6-hour program
 assets/css/site.css            Entry: layer order, imports, reset, base, layout, utilities
@@ -148,7 +152,9 @@ one line in `tokens.css`.
 counterpoint: it rebinds every semantic token to the light set (`--sand-100` surface,
 `--navy-900` text, `--red-600` accent, `--slate-600` brand) so pages alternate navy and sand.
 `.band--dark`, `.page-hero--dark` and `.site-footer` sink a section to `--navy-900`. The kids
-door (`.door--kids`, `--blue-300`) stays light blue so the two doors read as two businesses. Primary CTAs stay `--red-600` with white text (5.9:1); `--red-200` is
+strip (`.path--kids`, `--blue-300`) stays light blue and the work strip (`.path--work`) sinks to
+`--navy-900`, so the two paths read as two businesses. Each strip rebinds the semantic tokens
+on itself, like a band. Primary CTAs stay `--red-600` with white text (5.9:1); `--red-200` is
 the accent for text because `--red-600` fails contrast on navy. `.btn--solid` is the inverse
 button: text colour as background, surface colour as text.
 
@@ -205,6 +211,19 @@ Base size 17px (16px under 640px), line-height 1.6, measure capped at 58–64ch.
   shows still. The SVG carries no hex and no `style` — colours are `hero-anim__ink--*` /
   `__line--*` token classes. The keyframe percentages were set as one timeline; retime them
   together, never one in isolation, or the two layers drift out of sync.
+- **The two paths** (`.paths` in `index.html`, keyframes `path-*`, `ride-*`, `call-*`
+  in `components.css`) run on the hero's 11 s clock. The picker never moves on its own — a
+  selector that changes by itself reads as broken. It is a segmented control: one option is
+  always active — on a thumb in its strip's colours, 10 % larger — and the other sits in grey.
+  *mi hijo* is active at rest; hovering or focusing *mí* slides the thumb across and turns it
+  navy, and the matching strip sweeps. The ring arrow nudges forward
+  at 45 %, when the tero lands; on hover the ring fills with the accent and the arrow passes
+  through and comes back. The kids scene: Flor's car drives to the house (3–38 %) and the tero lands on the roof
+  at 42 %, with the hero's tero. The work scene: the call bubble says *Hi,* → *let me explain.* →
+  *Deal.* in step with the hero's phrases while the voice bars grow. The CSS base state of every
+  piece is the final frame, so reduced motion shows the car parked and *Deal.* on screen. The
+  hover sweep on a strip is a `clip-path`, not `scaleX(0)`: a zero-scaled layer leaves a
+  hairline at the strip edges in Chrome.
 - **Page transitions** are native cross-document View Transitions (`@view-transition` in
   `site.css`), no JavaScript: the header is pinned (`view-transition-name:site-header`), the
   content fades with an 8px drift, ~300 ms. Only same-origin navigations over http(s) animate —

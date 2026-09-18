@@ -89,38 +89,74 @@
   </div>
 </section>
 
-<section class="band band--soft" aria-labelledby="doors">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Dos servicios</span>
-      <h2 class="section-head__title" id="doors">Una misma forma de enseñar, <em>dos puertas.</em></h2>
-      <p class="section-head__text">Lo que cambia es el lugar y el objetivo. Lo que no cambia: clases de a uno, con alguien que viene de aulas bilingües de verdad.</p>
-    </div>
-    <div class="doors">
-      <a class="door door--kids" href="kids/">
-        <small class="door__label">Teacher Flor · a domicilio</small>
-        <h3 class="door__title">Inglés en casa, <em>sin llevarlo a ningún lado.</em></h3>
-        <p class="door__text">Voy a tu casa en la Costa y trabajo con tu hijo lo mismo que se trabaja en un colegio bilingüe: lectura, conversación y juego.</p>
-        <ul class="door__list">
-          <li class="door__item">Primaria, de Year 1 a Year 6</li>
-          <li class="door__item">Visitas de 2 horas, hermanos o vecinos juntos</li>
-          <li class="door__item">De Shangrilá a El Pinar</li>
-        </ul>
-        <span class="door__cta">Ver clases para chicos <svg class="door__arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
-      </a>
-      <a class="door door--pros" href="professionals/">
-        <small class="door__label">English at Work · online</small>
-        <h3 class="door__title">¿Te trabás en las reuniones? <em>Eso se termina acá.</em></h3>
-        <p class="door__text">Leés y escribís en inglés sin problema, pero cuando se prende la cámara te quedás callado. Lo ensayamos hasta que salga solo.</p>
-        <ul class="door__list">
-          <li class="door__item">Programa de 6 horas, uno a uno</li>
-          <li class="door__item">Tus reuniones reales, no un libro</li>
-          <li class="door__item">Desde cualquier lugar de Latinoamérica</li>
-        </ul>
-        <span class="door__cta">Ver el programa <svg class="door__arrow" aria-hidden="true"><use href="#arrow"/></svg></span>
-      </a>
+<section class="band band--soft paths" aria-labelledby="paths-title">
+  <div class="paths__head">
+    <div class="wrap">
+      <span class="eyebrow">Dos caminos</span>
+      <div class="paths__ask">
+        <h2 class="paths__title" id="paths-title">Busco inglés para</h2>
+        <nav class="picker" aria-label="Para quién es el inglés">
+          <span class="picker__thumb" aria-hidden="true"></span>
+          <a class="picker__option picker__option--kids" href="kids/"><span class="picker__face">mi hijo</span></a>
+          <a class="picker__option picker__option--work" href="professionals/"><span class="picker__face">mí</span></a>
+        </nav>
+      </div>
+      <p class="paths__text">Una sola profe, clases de a uno y sin moverte de donde estás.</p>
     </div>
   </div>
+  <a class="path path--kids" href="kids/">
+    <div class="wrap path__inner">
+      <svg class="path__art ride" viewBox="0 0 240 120" aria-hidden="true">
+        <path class="ride__road" d="M6 101 H234"/>
+        <path class="ride__house" d="M174 100 V66 L196 48 L218 66 V100 Z"/>
+        <path class="ride__roof" d="M168 70 L196 44 L224 70"/>
+        <rect class="ride__door" x="189" y="80" width="14" height="20" rx="2"/>
+        <rect class="ride__window" x="204" y="71" width="8" height="8" rx="1.5"/>
+        <g class="ride__tero"><use href="#logo" x="172" y="-8" width="48" height="48"/></g>
+        <g class="ride__car">
+          <g class="ride__exhaust"><circle class="ride__puff" cx="8" cy="90" r="4"/><circle class="ride__puff ride__puff--late" cx="8" cy="90" r="4"/></g>
+          <path class="ride__body" d="M12 92 V84 Q12 78 18 78 H24 L32 68 H46 Q50 68 53 72 L58 78 Q62 78 62 84 V92 Z"/>
+          <path class="ride__glass" d="M28 77 L34 71 H44 Q47 71 49 74 L52 77 Z"/>
+          <g class="ride__wheel"><circle cx="24" cy="93" r="6.5"/><path d="M24 88.5 V97.5 M19.5 93 H28.5"/></g>
+          <g class="ride__wheel"><circle cx="50" cy="93" r="6.5"/><path d="M50 88.5 V97.5 M45.5 93 H54.5"/></g>
+        </g>
+      </svg>
+      <div class="path__body">
+        <small class="path__label"><span class="path__index">01</span>Teacher Flor · a domicilio</small>
+        <h3 class="path__title">Inglés en casa, <em>sin llevarlo a ningún lado.</em></h3>
+        <p class="path__meta">Primaria, de Year 1 a Year 6<span class="path__sep" aria-hidden="true">·</span>De Shangrilá a El Pinar</p>
+      </div>
+      <span class="path__go"><span class="path__go-label">Ver las clases</span><span class="path__go-ring"><svg class="path__go-arrow" aria-hidden="true"><use href="#arrow"/></svg></span></span>
+    </div>
+  </a>
+  <a class="path path--work" href="professionals/">
+    <div class="wrap path__inner">
+      <svg class="path__art call" viewBox="0 0 240 120" aria-hidden="true">
+        <rect class="call__screen" x="20" y="16" width="124" height="78" rx="6"/>
+        <path class="call__base" d="M8 94 H156 L162 102 H2 Z"/>
+        <circle class="call__cam" cx="82" cy="22" r="2"/>
+        <circle class="call__person" cx="82" cy="50" r="13"/>
+        <path class="call__person" d="M56 94 C56 70 108 70 108 94 Z"/>
+        <g class="call__voice">
+          <rect class="call__bar" x="118" y="70" width="4" height="18" rx="2"/>
+          <rect class="call__bar call__bar--mid" x="125" y="70" width="4" height="18" rx="2"/>
+          <rect class="call__bar call__bar--late" x="132" y="70" width="4" height="18" rx="2"/>
+        </g>
+        <g class="call__bubble">
+          <path class="call__balloon" d="M136 4 H220 A16 16 0 0 1 220 36 H142 L130 46 L134 34 A16 16 0 0 1 136 4 Z"/>
+          <text class="call__line call__line--hi" x="178" y="25" text-anchor="middle">Hi,</text>
+          <text class="call__line call__line--explain" x="178" y="25" text-anchor="middle">let me explain.</text>
+          <text class="call__line call__line--deal" x="178" y="25" text-anchor="middle">Deal.</text>
+        </g>
+      </svg>
+      <div class="path__body">
+        <small class="path__label"><span class="path__index">02</span>English at Work · online</small>
+        <h3 class="path__title">¿Te trabás en las reuniones? <em>Eso se termina acá.</em></h3>
+        <p class="path__meta">Programa de 6 horas, uno a uno<span class="path__sep" aria-hidden="true">·</span>Desde toda Latinoamérica</p>
+      </div>
+      <span class="path__go"><span class="path__go-label">Ver el programa</span><span class="path__go-ring"><svg class="path__go-arrow" aria-hidden="true"><use href="#arrow"/></svg></span></span>
+    </div>
+  </a>
 </section>
 
 <section id="about" aria-labelledby="about-title">
