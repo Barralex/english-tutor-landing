@@ -1,6 +1,7 @@
 <div align="center">
 
 <img src="assets/brand/banner.png" width="100%" alt="TeroTalk">
+<br><br>
 
 [![Live](https://img.shields.io/badge/live-terotalk.com-262940?style=flat-square)](https://terotalk.com/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-deployed-B8323A?style=flat-square&logo=github&logoColor=white)](https://terotalk.com/)
