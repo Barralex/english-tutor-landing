@@ -88,6 +88,7 @@ robots.txt                     Crawler rules
 LICENSE                        All rights reserved; brand, copy and photos excluded
 sitemap.xml                    Three URLs; bump lastmod when copy changes
 .github/scripts/check.py       Pre-deploy gate (see §5)
+.github/scripts/stamp.sh       Deploy-time cache busting (see §5)
 .github/workflows/deploy.yml   GitHub Pages deploy
 ```
 
@@ -234,6 +235,24 @@ It fails the build on:
 5. A missing, relative, or wrong-domain `og:`/`twitter:` tag.
 
 Add every new page to `PAGES` in that script **and** to `sitemap.xml`.
+
+### Cache busting
+
+GitHub Pages serves every file with `max-age=600` and the asset names never change, so
+after a deploy a browser that already holds `site.css` keeps rendering the old styles —
+exactly what happens on the tablet used to show clients progress. The deploy job runs
+`.github/scripts/stamp.sh` before uploading: every local `href`/`src` under `assets/` in
+the pages, and the two `@import`s in `site.css`, get `?v=<short commit>` in the published
+copy only. The repository keeps clean URLs; nobody bumps a version by hand.
+
+- Link every new asset with a plain relative path under `assets/`; the stamp picks it up.
+  A new page goes in the `pages` list of `stamp.sh` as well as `PAGES` in `check.py`.
+- A new stylesheet `@import` must keep the `url("name.css")` form or it will not be stamped.
+- The script fails the deploy if it stamps fewer than five references, so a markup change
+  that breaks the pattern cannot silently switch cache busting off.
+- The HTML itself still carries the 10-minute cache. When showing a client a change right
+  after a deploy, open the page with any query string (`/?v=2`) to fetch fresh HTML;
+  the stamped assets follow from there.
 
 ### Canonical URL
 
