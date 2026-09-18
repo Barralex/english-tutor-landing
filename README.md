@@ -6,7 +6,7 @@
 [![Live](https://img.shields.io/badge/live-terotalk.com-262940?style=flat-square)](https://terotalk.com/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-deployed-B8323A?style=flat-square&logo=github&logoColor=white)](https://terotalk.com/)
 [![Build](https://img.shields.io/badge/build-none-5F6073?style=flat-square)](#requirements)
-[![License](https://img.shields.io/badge/license-MIT-4A4E6D?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/license-proprietary-4A4E6D?style=flat-square)](LICENSE)
 
 ### Untangle your English.
 
@@ -39,13 +39,13 @@ Design tokens, conventions and open work: [CLAUDE.md](CLAUDE.md).
 
 ## License
 
-[MIT](LICENSE) &copy; [Luis Barral](https://barral.dev). Free to use and adapt, as long as the credit stays.
+&copy; 2026 [Luis Barral](https://barral.dev). All rights reserved. The code is public to read, not to reuse: copying or adapting it needs written permission. See [LICENSE](LICENSE).
 
 The brand, the copy and the photography belong to the client and are not covered by it.
 
 <div align="center">
 
-**[Luis Barral](https://barral.dev)** &middot; MIT License
+**[Luis Barral](https://barral.dev)** &middot; All rights reserved
 
 <sub>co-assisted by <b>Claude Opus 5</b></sub>
 

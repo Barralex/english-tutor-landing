@@ -81,7 +81,7 @@ assets/brand/banner.png        README header, repo only
 assets/brand/preview.jpg       README screenshot, repo only
 assets/flor-santos.jpg         Portrait, home page only
 robots.txt                     Crawler rules
-LICENSE                        MIT, code only; brand, copy and photos excluded
+LICENSE                        All rights reserved; brand, copy and photos excluded
 sitemap.xml                    Three URLs; bump lastmod when copy changes
 .github/scripts/check.py       Pre-deploy gate (see §5)
 .github/workflows/deploy.yml   GitHub Pages deploy
