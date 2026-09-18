@@ -336,6 +336,10 @@ A change is finished when all of the following are true:
 - [ ] Accessibility floor intact (§3).
 - [ ] `sitemap.xml` `lastmod` bumped if copy changed.
 - [ ] **`CLAUDE.md` updated if anything in §1–§5 or §7 moved.**
+- [ ] **README images match the live site.** If the home page changed visibly, regenerate
+      `assets/brand/preview.jpg` (1860×1050: the desktop page in a browser frame and the
+      phone beside it, animations frozen on the final frame). If the logo, wordmark or
+      tagline changed, regenerate `assets/brand/banner.png` too. Same commit as the change.
 - [ ] Commit message follows the convention.
 
 ---
