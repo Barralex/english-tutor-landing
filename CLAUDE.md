@@ -75,7 +75,7 @@ professionals/index.html       English at Work: the 6-hour program
 assets/css/site.css            Entry: layer order, imports, reset, base, layout, utilities
 assets/css/tokens.css          Primitives, semantic aliases, spacing and type scales
 assets/css/components.css      Every component block, BEM
-assets/brand/favicon.svg       The logo on a sand tile
+assets/brand/favicon.svg       The logo on a navy tile
 assets/brand/logo.svg          Logo: tero nesting in a TT speech bubble, wing raised (logo-dark.svg for navy)
 assets/brand/logo.png          1024px exports of the logo, light and dark, for use outside the site
 assets/brand/quality-seal.svg  Quality seal, not used on the site yet (see §7); PNG exports beside it
@@ -129,22 +129,32 @@ one line in `tokens.css`.
 
 | Semantic token | Primitive | Role |
 |---|---|---|
-| `--color-surface` | `--sand-100` `#F3ECE0` | Page background |
-| `--color-surface-raised` | `--sand-50` `#FBF8F2` | Cards, chips, raised panels |
-| `--color-surface-sunken` | `--sand-200` `#E9DFCE` | Recessed panels |
-| `--color-text` | `--navy-900` `#262940` | Body and headings |
-| `--color-text-muted` | `--slate-500` `#5F6073` | Secondary text |
-| `--color-accent` | `--red-600` `#B8323A` | Emphasis, focus ring, primary CTA |
+| `--color-surface` | `--navy-800` `#2D3049` | Page background (the README banner navy) |
+| `--color-surface-raised` | `--navy-700` `#363A58` | Cards, chips, raised panels |
+| `--color-surface-sunken` | `--navy-900` `#262940` | Recessed panels |
+| `--color-text` | `--sand-100` `#F3ECE0` | Body and headings |
+| `--color-text-muted` | `--lilac-200` `#D9D8E5` | Secondary text |
+| `--color-accent` | `--red-200` `#F08A90` | Emphasis, focus ring, italic heading turns |
 | `--color-accent-strong` | `--red-700` `#9A2830` | CTA hover only |
-| `--color-brand` | `--slate-600` `#4A4E6D` | Eyebrows, handwriting, brand mark |
-| `--color-border` | `--sand-300` `#DCD2C0` | Every hairline |
+| `--color-brand` | `--blue-300` `#A9C4DE` | Eyebrows, handwriting, threads |
+| `--color-border` | sand at 14% | Every hairline |
+| `--color-positive` | `--green-300` `#8FC1A9` | Check icons in lists |
 | `--color-map-area` / `--color-map-base` | `--green-700` / `--red-600` | Coverage map only |
-| `--color-logo-*` | navy, slate, sand, `--red-600` | The `#logo` symbol and the red *Talk* of the wordmark; `--color-logo-gap` is the ring that separates the bird from the bubble and must match the background. `.site-footer` rebinds them, with `--red-300` `#E0666D` for the beak |
+| `--color-logo-*` | sand, `--blue-300`, `--red-300` `#E0666D` | The `#logo` symbol and the red *Talk* of the wordmark; `--color-logo-gap` is the ring that separates the bird from the bubble and must match the background |
 
-**Dark sections never override a component.** `.band--dark`, `.page-hero--dark` and
-`.site-footer` rebind the semantic tokens on themselves, so every component inside adapts
-without a single descendant selector. Accent discipline: red is the only saturated colour
-and it means "act here"; in a dark context the rebinding swaps it for `--blue-300`.
+**The site is dark, broken by sand.** The base is `--navy-800`. `.band--soft` is the
+counterpoint: it rebinds every semantic token to the light set (`--sand-100` surface,
+`--navy-900` text, `--red-600` accent, `--slate-600` brand) so pages alternate navy and sand.
+`.band--dark`, `.page-hero--dark` and `.site-footer` sink a section to `--navy-900`. The kids
+door (`.door--kids`, `--blue-300`) stays light blue so the two doors read as two businesses. Primary CTAs stay `--red-600` with white text (5.9:1); `--red-200` is
+the accent for text because `--red-600` fails contrast on navy. `.btn--solid` is the inverse
+button: text colour as background, surface colour as text.
+
+**Dark sections never override a component.** Every section rebinds the semantic tokens on
+itself, so every component inside adapts without a single descendant selector. Accent
+discipline: red is the only saturated colour and it means "act here". On every navy surface
+the accent is `--red-200`; on sand it is `--red-600`. Blue stays in its lane as
+`--color-brand` (eyebrows, threads, handwriting) and never carries the italic turn.
 
 Spacing is a 4px scale, `--space-1` to `--space-24`. No component invents a padding.
 

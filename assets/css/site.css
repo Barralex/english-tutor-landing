@@ -12,7 +12,7 @@
 }
 
 @layer base{
-  html{scroll-behavior:smooth;scroll-padding-top:var(--header-offset)}
+  html{color-scheme:dark;scroll-behavior:smooth;scroll-padding-top:var(--header-offset)}
 
   body{
     background:var(--color-surface);
@@ -57,17 +57,24 @@
     --color-surface-raised:rgba(243,236,224,.05);
     --color-text:var(--sand-100);
     --color-text-muted:var(--lilac-200);
-    --color-accent:var(--blue-300);
     --color-brand:var(--blue-300);
     --color-border:rgba(243,236,224,.18);
     background:var(--color-surface);
     color:var(--color-text);
   }
 
-  .band--flush-top{padding-top:0}
 
   .band--soft{
-    --color-surface:var(--sand-50);
+    --color-surface:var(--sand-100);
+    --color-surface-raised:var(--sand-50);
+    --color-surface-sunken:var(--sand-200);
+    --color-text:var(--navy-900);
+    --color-text-muted:var(--slate-500);
+    --color-accent:var(--red-600);
+    --color-brand:var(--slate-600);
+    --color-border:var(--sand-300);
+    --color-positive:var(--green-700);
+    color:var(--color-text);
     background:var(--color-surface);
     border-block:1px solid var(--color-border);
   }
