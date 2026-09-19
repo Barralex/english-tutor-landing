@@ -81,9 +81,9 @@ assets/css/site.css            Entry: layer order, imports, reset, base, layout,
 assets/css/tokens.css          Primitives, semantic aliases, spacing and type scales
 assets/css/components.css      Every component block, BEM
 assets/brand/favicon.svg       The logo on a navy tile
-assets/brand/logo.svg          Logo: tero nesting in a TT speech bubble, wing raised (logo-dark.svg for navy)
+assets/brand/logo.svg          Logo: the chibi mascot nesting in a TT speech bubble (logo-dark.svg for navy)
 assets/brand/logo.png          1024px exports of the logo, light and dark, for use outside the site
-assets/brand/quality-seal.svg  Quality seal, not used on the site yet (see §7); PNG exports beside it
+assets/brand/quality-seal.svg  Quality seal with the mascot standing, not used on the site yet (see §7); PNG exports beside it
 assets/brand/og-cover.png      Link preview image (PLACEHOLDER — see §7)
 assets/brand/banner.png        README header, repo only
 assets/brand/preview.jpg       README screenshot, repo only
@@ -95,6 +95,10 @@ sitemap.xml                    Three URLs; bump lastmod when copy changes
 .github/scripts/check.py       Pre-deploy gate (see §5)
 .github/scripts/stamp.sh       Deploy-time cache busting (see §5)
 .github/workflows/deploy.yml   GitHub Pages deploy
+design/logo/build.py           Source of the mark: writes every logo SVG, the sprites, seals and canvas marks
+design/logo/banner.html        README banner layout (build.py --export renders it)
+design/canvas/project/         Source of the design canvas, one .dc.html per board
+design/README.md               How the brand source and the canvas are kept
 ```
 
 ### Conventions that hold across all three pages
@@ -117,6 +121,16 @@ sitemap.xml                    Three URLs; bump lastmod when copy changes
 - **Only two external runtime dependencies**, both from a CDN: Google Fonts in every
   `<head>`, and Leaflet 1.9.4 for the coverage map on the kids page. Adding a third
   needs a real justification.
+- **The mark is generated, never hand-edited.** The logo is the mascot: the same chibi tero as
+  `.chibi-tero`, nesting in the TT bubble. Its shapes and palettes live in `design/logo/build.py`,
+  which rewrites the `#logo` symbol in all three pages, `logo*.svg`, `favicon.svg`, both quality
+  seals and every mark on the canvas boards. Change it there and run the script; `--export`
+  also renders the PNGs and `banner.png`. The logo appears where the brand signs (header,
+  footer, the hero landing, the kids roof, the seam medallion); the full mascot with legs
+  appears only where it acts (`.chibi-tero`) and on the seals.
+- **The design canvas lives in the repo.** `design/canvas/project/` is the source of the canvas
+  (https://claude.ai/artifact/4uaVm4QbSzWGwgbjSvYjDe). Edit the boards there, publish the folder,
+  and commit both in the same change. A brand change that leaves the canvas behind is incomplete.
 - **Structured data.** The home page carries a `Person` JSON-LD block. Keep it in
   sync with the visible credentials.
 
@@ -348,7 +362,9 @@ A change is finished when all of the following are true:
 - [ ] **README images match the live site.** If the home page changed visibly, regenerate
       `assets/brand/preview.jpg` (1860×1050: the desktop page in a browser frame and the
       phone beside it, animations frozen on the final frame). If the logo, wordmark or
-      tagline changed, regenerate `assets/brand/banner.png` too. Same commit as the change.
+      tagline changed, run `python design/logo/build.py --export` for the banner and PNGs.
+      Same commit as the change.
+- [ ] **Canvas in sync.** A brand change updates `design/canvas/` and is published to the canvas.
 - [ ] Commit message follows the convention.
 
 ---

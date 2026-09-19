@@ -24,6 +24,9 @@
 .logo__beak{fill:var(--color-logo-beak)}
 .logo__bubble{fill:var(--color-logo-bubble);stroke:var(--color-logo-gap)}
 .logo__letters{fill:var(--color-logo-letters)}
+.logo__arm{fill:var(--color-logo-belly);stroke:var(--color-logo-ink);stroke-width:1.5}
+.logo__eye{fill:var(--color-logo-ink);stroke:var(--color-logo-beak);stroke-width:1.5}
+.logo__cheek{fill:var(--color-logo-beak);opacity:.5}
 .brand__name{font-family:var(--font-serif);font-weight:650;font-size:var(--text-2xl);line-height:1;letter-spacing:-.03em;font-variation-settings:"SOFT" 100,"WONK" 1}
 .brand__talk{font-style:italic;font-weight:500;color:var(--color-logo-beak)}
 
