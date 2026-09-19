@@ -4,7 +4,7 @@
   "v": 1,
   "at": "2026-09-18T02:43:53Z"
  },
- "title": "TeroTalk · marca",
+ "title": "TeroTalk · brand",
  "launch": {
   "view": "canvas"
  },
@@ -15,7 +15,7 @@
    "y": 0,
    "w": 1440,
    "h": 1200,
-   "title": "01 · Marca",
+   "title": "01 · Brand",
    "guides": [
     {
      "kind": "columns",
@@ -31,7 +31,7 @@
    "y": 1320,
    "w": 1440,
    "h": 480,
-   "title": "02 · Hero · hilo animado"
+   "title": "02 · Hero · animated thread"
   }
  },
  "order": [

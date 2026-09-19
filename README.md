@@ -29,13 +29,17 @@ Flor teaches; TeroTalk is only the name over the door, and the site was built so
 
 Three static pages, one per audience, with a home that splits between them. HTML and three stylesheets, no build step and no dependencies. Every push to `main` is checked before it ships, and a check that fails leaves the live site exactly as it was.
 
-Design tokens, conventions and open work: [CLAUDE.md](CLAUDE.md). The brand is kept as source in [design/](design/): one script draws the mark and writes every logo, favicon, seal and canvas board from it, so none of them can drift.
+Design tokens, conventions and open work: [CLAUDE.md](CLAUDE.md).
 
 ## Requirements
 
 - A text editor. There is no build step and nothing to install.
 - Python 3, to run `.github/scripts/check.py` before pushing.
 - A GitHub account with Pages enabled, to publish.
+
+## Brand
+
+The brand system and its assets are developed in [`design/`](design/). Work in progress.
 
 ## License
 

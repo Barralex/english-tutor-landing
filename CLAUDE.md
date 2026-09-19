@@ -98,6 +98,7 @@ sitemap.xml                    Three URLs; bump lastmod when copy changes
 design/logo/build.py           Source of the mark: writes every logo SVG, the sprites, seals and canvas marks
 design/logo/banner.html        README banner layout (build.py --export renders it)
 design/canvas/project/         Source of the design canvas, one .dc.html per board
+design/canvas/export.py        Renders the boards to PDF, SVG (Figma/Penpot) and PNG in design/canvas/export/
 design/README.md               How the brand source and the canvas are kept
 ```
 
@@ -129,8 +130,9 @@ design/README.md               How the brand source and the canvas are kept
   footer, the hero landing, the kids roof, the seam medallion); the full mascot with legs
   appears only where it acts (`.chibi-tero`) and on the seals.
 - **The design canvas lives in the repo.** `design/canvas/project/` is the source of the canvas
-  (https://claude.ai/artifact/4uaVm4QbSzWGwgbjSvYjDe). Edit the boards there, publish the folder,
-  and commit both in the same change. A brand change that leaves the canvas behind is incomplete.
+  (https://claude.ai/artifact/4uaVm4QbSzWGwgbjSvYjDe). Edit the boards there, run
+  `python design/canvas/export.py` so the PDF, SVG and PNG exports match, publish the folder,
+  and commit all of it in the same change. A brand change that leaves the canvas behind is incomplete.
 - **Structured data.** The home page carries a `Person` JSON-LD block. Keep it in
   sync with the visible credentials.
 
@@ -269,7 +271,10 @@ not optional extras; a change that drops one is a regression.
 ## 4. Voice and copy
 
 **Site copy is Spanish (Rioplatense, `voseo`) — `lang="es-UY"`. This file and all
-repository documentation are English.** Do not mix the two.
+repository documentation are English, and so is the design documentation: canvas board
+titles, headings, specs and captions.** Do not mix the two. When a board reproduces site copy
+(the hero's Spanish layer), that copy stays exactly as on the site; so does client-facing
+brand material such as the quality seal.
 
 - Write the way Flor speaks: direct, warm, no institutional register, no exclamation marks.
 - Headings carry the idea; the italic `<em>` fragment carries the turn.
